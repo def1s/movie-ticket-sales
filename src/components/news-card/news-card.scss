@@ -1,0 +1,27 @@
+.news-card {
+	width: 419px;
+
+	&__cover {
+		border-radius: 10px;
+		width: 419px;
+		height: 237px;
+	}
+	
+	&__title {
+		margin-top: 14px;
+		font-size: 24px;
+		width: 355px;
+		color: var(--shade-900, #333);
+		font-family: Roboto;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 32px;
+	}
+	
+	&__date {
+		margin-top: 18px;
+		font-weight: 300;
+		color: #5A637A;
+	}
+}

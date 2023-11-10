@@ -1,0 +1,37 @@
+//reboot all default styles from css
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+//max width of content
+.container {
+	width: 1300px;
+	margin: 0 auto;
+}
+
+//временно
+.arrow {
+	width: 72px;
+	height: 72px;
+	cursor: pointer;
+
+	&_position-absolute {
+		position: absolute;
+	}
+
+	&_left-50-percents {
+		left: 0;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	&_right-50-percents {
+		right: 0;
+		top: 50%;
+		transform: translateX(50%) translateY(-50%);
+	}
+}

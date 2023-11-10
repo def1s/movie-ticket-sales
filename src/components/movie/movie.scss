@@ -1,0 +1,69 @@
+.movie {
+	width: 500px;
+	min-height: 500px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	
+	&_wigth-379 {
+		width: 379px;
+	}
+
+	&__cover {
+		width: 100%;
+		height: 707px;
+		border-radius: 10px;
+		
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		&_height-507 {
+			height: 507px;
+		}
+	}
+
+	&__title {
+		width: 100%;
+		text-align: center;
+		margin-top: 52px;
+		font-size: 36px;
+		font-weight: 700;
+
+		&_font-size-24 {
+			font-size: 24px;
+		}
+
+		&_text-align-left {
+			text-align: left;
+		}
+	}
+
+	&__tags {
+		width: 100%;
+		display: flex;
+		margin-top: 24px;
+		justify-content: center;
+		
+		&_jc-left {
+			justify-content: left;
+		}
+	}
+
+	&__tag {
+		margin-right: 18px;
+		height: 26px;
+		background-color: aqua;
+		display: flex;
+		align-content: center;
+		font-size: 14px;
+		padding: 6px 8px;
+		border-radius: 5px;
+		font-size: 12px;
+		font-weight: 700;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}

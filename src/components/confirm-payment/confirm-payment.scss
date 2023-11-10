@@ -1,0 +1,21 @@
+.confirm-payment {
+	margin-top: 24px;
+
+	&__header {
+		font-size: 36px;
+		font-weight: 700;
+		color: $dark-grey;
+	}
+
+	&__descr {
+		color: $light-grey;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		margin-top: 18px;
+	}
+
+	&__wrapper {
+		display: flex;
+	}
+}

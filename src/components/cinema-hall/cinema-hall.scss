@@ -1,0 +1,55 @@
+.cinema-hall {
+	margin-top: 36px;
+	width: 100%;
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	&__name {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 32px;
+		color: #5A637A;
+	}
+
+	&__cost {
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 28px;
+		color: #5A637A;
+	}
+
+	&__times {
+		width: 362px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__time {
+		width: 77px;
+		height: 40px;
+		padding: 12px 20px 12px 20px;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 4px;
+		margin-right: 18px;
+		margin-top: 16px;
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+
+		&_occupied {
+			background-color: #DADFE8;
+			color: #9DA8BE;
+			border-color: #DADFE8;
+		}
+
+		&_current {
+			background-color: #1A2C50;
+			color: #fff;
+		}
+	}
+}

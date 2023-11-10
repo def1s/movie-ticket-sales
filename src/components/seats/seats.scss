@@ -1,0 +1,99 @@
+.seats {
+	width: 1096px;
+	margin: 0 auto;
+	margin-top: 68px;
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__time {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 32px;
+		color: #333333;
+	}
+
+	&__descr {
+		display: flex;
+		align-items: center;
+	}
+
+	&__status {
+		display: flex;
+		align-items: center;
+		margin-right: 24px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__color {
+		width: 16px;
+		height: 16px;
+		background-color: #000;
+		margin-right: 12px;
+	}
+
+	&__name {
+		font-size: 12px;
+		font-weight: 500;
+		color: #333333;
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__grid {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		margin-top: 30px;
+	}
+
+	&__seat {
+		width: 40px;
+		height: 36px;
+		margin-right: 12px;
+		margin-bottom: 12px;
+		border-radius: 6px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #9DA8BE;
+		text-align: center;
+		padding: 10px 0px;
+		color: #333333;
+		/* font styles */
+		font-size: 12px;
+		font-weight: 700;
+		&:nth-child(10n) {
+			margin-right: 80px;
+		}
+		&:nth-child(20n) {
+			margin-right: 0;
+		}
+	}
+
+}
+
+.occupied-seat {
+	background-color: #1A2C50;
+	color: #fff;
+	border-color: #1A2C50;
+}
+
+.empty-seat {
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #9DA8BE;
+}
+
+.selected-seat {
+	color: #fff;
+	background-color: #118EEA;
+	border-color: #118EEA;
+}

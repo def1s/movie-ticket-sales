@@ -1,0 +1,42 @@
+.payment-details {
+	margin-top: 102px;
+	width: 421px;
+
+	&__info {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 32px;
+		// color: $dark-grey;
+		margin-top: 8px;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	&__title {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		color: $middle-grey;
+		margin-top: 17px;
+	}
+
+	&__field {
+		display: flex;
+	}
+
+	&__wrapper {
+		&:first-child {
+			margin-right: 76px;
+		}
+	}
+
+	&__back {
+		display: block;
+		margin-top: 62px;
+		font-size: 24px;
+		font-weight: 700;
+		color: $light-grey;
+	}
+
+}

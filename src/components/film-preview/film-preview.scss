@@ -1,0 +1,54 @@
+.film-preview {
+	width: 425px;
+	padding-top: 34px;
+
+	&_ml {
+		margin-left: 130px;
+	}
+
+	&__descr {
+		
+	}
+
+	&__cover {
+		width: 413px;
+		height: 364px;
+		overflow: hidden;
+		border-radius: 16px;
+		img {
+			width: 100%;
+		}
+	}
+
+	&__title {
+		margin-top: 50px;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 32px;
+		color: #333333;
+	}
+
+	&__wrapper {
+		position: relative;
+		height: 24px;
+		width: 100%;
+		margin-top: 12px;
+	}
+
+	&__label {
+		position: absolute;
+		font-size: 16px;
+		font-weight: 400;
+		color: #333333;
+	}
+
+	&__info {
+		position: absolute;
+		left: 120px;
+		color: #333333;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+	}
+}

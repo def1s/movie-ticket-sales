@@ -1,0 +1,20 @@
+.movie-selection {
+	width: 100%;
+	min-height: 400px;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__slider {
+		display: flex;
+		width: 1078px;
+		justify-content: space-between;
+	}
+
+	&_mt-80 {
+		margin-top: 80px;
+	}
+}

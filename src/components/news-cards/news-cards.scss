@@ -1,0 +1,9 @@
+.news-cards {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+
+	&_mt-50 {
+		margin-top: 50px;
+	}
+}

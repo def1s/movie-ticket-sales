@@ -1,0 +1,11 @@
+.coming-soon {
+	&__movies {
+		display: flex;
+		width: 100%;
+		margin-top: 30px;
+		justify-content: space-between;
+	}
+	&_mt-80 {
+		margin-top: 80px;
+	}
+}
