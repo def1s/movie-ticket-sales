@@ -1,5 +1,7 @@
 import './order.scss';
 
+import { Link } from 'react-router-dom';
+
 const Order = () => {
 	return (
 		<div class="order">
@@ -12,7 +14,7 @@ const Order = () => {
 				<div class="order__time">11:00</div>
 			</div>
 
-			<a class="order__confirm-button" href="./chooise.html">CONFIRM</a> 
+			<Link to={'/choosing-seat'}><button class="order__confirm-button">CONFIRM</button></Link>
 		</div>
 	);
 }

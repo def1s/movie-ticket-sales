@@ -1,0 +1,18 @@
+.slider {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__wrapper {
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
+	}
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		min-width: 500px;
+		transition: transform 0.5s;
+	}
+}
