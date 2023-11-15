@@ -8,21 +8,6 @@
 		align-items: center;
 	}
 
-	&__inner {
-		display: flex;
-		justify-content: space-between;
-		min-width: 500px;
-		transition: transform 0.5s;
-	}
-
-	&__slider {
-		// display: flex;
-		width: 1078px;
-		overflow: hidden;
-		position: relative;
-		// justify-content: space-between;
-	}
-
 	&_mt-80 {
 		margin-top: 80px;
 	}

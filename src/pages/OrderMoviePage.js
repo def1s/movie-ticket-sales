@@ -11,17 +11,12 @@ const OrderMoviePage = () => {
 				<div className="chooise__wrapper">
 
 					<FilmDetails/>
-
+			
 					<FilmPreview/>
 
 				</div>
 			</div>
 		</div>
-		// <>
-
-		// 	<FilmDetails/>
-
-		// </>
 	);
 }
 

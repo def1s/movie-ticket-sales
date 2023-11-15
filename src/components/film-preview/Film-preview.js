@@ -1,5 +1,7 @@
 import './film-preview.scss';
 
+import cover from '../../imgs/cover2.png';
+
 import Order from '../order/Order';
 
 const FilmPreview = () => {
@@ -8,7 +10,7 @@ const FilmPreview = () => {
 
 			<div class="film-preview__descr">
 				<div class="film-preview__cover">
-					<img src="../img/cover1.png" alt=""></img>
+					<img src={cover} alt=""></img>
 				</div>
 				<div class="film-preview__title">SPIDER-MAN: NO WAY HOME</div>
 				

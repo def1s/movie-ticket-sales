@@ -15,11 +15,11 @@ const Slider = (props) => {
 
 	const changeSlide = (i) => { //переменная i определяет знак в вычислении позиции
 		if ((position + i) * (itemWidht + marginRight) < 0) {
-			setPosition(slides.length - 1);
+			// setPosition(slides.length - numOfVisibleSlides);
 			return;
 		}
 
-		if ((position + i) * (itemWidht + marginRight) >= innerWidth) {
+		if ((position + i) * (itemWidht + marginRight) > innerWidth - windowWidth) {
 			setPosition(0);
 			return;
 		}
@@ -40,8 +40,6 @@ const Slider = (props) => {
 		'width': innerWidth + 'px',
 		'transform': `translateX(${position * -(itemWidht + marginRight)}px)`
 	};
-
-	// пофиксить баг с тем, что при 2 и более элементах прокручивается вперед больше, чем надо
 
 	return (
 		<div className="slider">

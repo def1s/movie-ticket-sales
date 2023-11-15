@@ -9,6 +9,13 @@
 		width: 379px;
 	}
 
+	&_mr-82 {
+		margin-right: 82px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
 	&__cover {
 		width: 100%;
 		height: 707px;
@@ -30,6 +37,7 @@
 		margin-top: 52px;
 		font-size: 36px;
 		font-weight: 700;
+		text-decoration: none;
 
 		&_font-size-24 {
 			font-size: 24px;

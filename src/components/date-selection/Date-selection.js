@@ -1,39 +1,63 @@
 import './date-selection.scss';
 
-import arrowToLeft from '../../imgs/arrow-left.png';
-import arrowToRight from '../../imgs/arrow-right.png';
+import Slider from '../slider/Slider';
+import { useEffect, useState } from 'react';
 
-const DateSelection = () => {
+ 
+const DateSelection = ({ sessions, getCurrentDate }) => {
+	const [sortedSessions, setSortedSessions] = useState([]);
+	const [currentIndexDate, setCurrentIndexDate] = useState(-1);
+
+	useEffect(() => {
+		const updatedSessions = sessions.map(session => ({
+			...session,
+			start_time: new Date(session.start_time)
+		})).sort((a, b) => a.start_time - b.start_time);
+
+
+		setSortedSessions(updatedSessions);
+	}, [sessions]);
+
+	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	const uniqueDates = [];
+
+	const dateOnPage = sortedSessions.map((session, index) => {
+		if (uniqueDates.includes(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) { //выводим только уникальные даты
+			return;
+		} else {
+			uniqueDates.push(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
+		}
+
+		let stylesBlock = '';
+		let stylesWeekday = '';
+
+		if (currentIndexDate == index) {
+			stylesBlock = 'date-selection__date_current';
+			stylesWeekday = 'date-selection__weekday_current';
+		}
+
+		return (
+			<div 
+				class={`date-selection__date ${stylesBlock}`}
+				key={index} 
+				onClick={() => {
+					getCurrentDate(session.start_time);
+					setCurrentIndexDate(index);
+				}}
+			>
+				<div class="date-selection__number">
+					{session.start_time.getDate()} {session.start_time.toLocaleString('en-US', {month: 'short'})}
+				</div>
+				<div class={`date-selection__weekday ${stylesWeekday}`}>{daysOfWeek[session.start_time.getDay()]}</div>
+			</div>
+		);
+	});
+
 	return (
 		<div class="date-selection">
-			<img src={arrowToLeft} alt="" class="arrow"></img>
-			
-			<div class="date-selection__inner">
 
-				<div class="date-selection__date date-selection__date_current">
-					<div class="date-selection__number">15 dec</div>
-					<div class="date-selection__weekday date-selection__weekday_current">SUN</div>
-				</div>
-				<div class="date-selection__date">
-					<div class="date-selection__number">17 dec</div>
-					<div class="date-selection__weekday">THS</div>
-				</div>
-				<div class="date-selection__date">
-					<div class="date-selection__number">18 dec</div>
-					<div class="date-selection__weekday">WND</div>
-				</div>
-				<div class="date-selection__date">
-					<div class="date-selection__number">19 dec</div>
-					<div class="date-selection__weekday">SDF</div>
-				</div>
-				<div class="date-selection__date">
-					<div class="date-selection__number">12 dff</div>
-					<div class="date-selection__weekday">РАЛ</div>
-				</div>
+			<Slider marginRight={24} itemWidht={86} numOfVisibleSlides={5} slides={dateOnPage}/>
 
-			</div>
-
-			<img src={arrowToRight} alt="" class="arrow"></img>
 		</div>
 	);
 }

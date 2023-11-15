@@ -24,6 +24,7 @@ const ComingSoon = () => {
 						movieTagsMods='movie__tags_jc-left'
 						movieCoverMods='movie__cover_height-507'
 						cover={cover}
+						title={'Film 1'}
 					/>
 					<Movie 
 						movieMods={'movie_wigth-379'} 
