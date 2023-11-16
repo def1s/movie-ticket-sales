@@ -1,8 +1,12 @@
 import './session-details.scss';
 
+import React from 'react';
+
 import CinemaHall from '../cinema-hall/Cinema-hall';
 
-const SessionDetails = ({ sessions, currentDate }) => {
+const MemoizedCinemaHall = React.memo(CinemaHall);
+
+const SessionDetails = ({ sessions, selectedDate, getSelectedDate, onSelectTime, selectedTime }) => {
 	const updatedSessions = sessions.map(session => ({ //повторение кода одного из компонентов, исправить выносом функционала на уровень выше
 		...session,
 		start_time: new Date(session.start_time)
@@ -10,7 +14,7 @@ const SessionDetails = ({ sessions, currentDate }) => {
 
 	const filteredSessions = updatedSessions.filter(session => {
 		const date1 = `${session.start_time.getFullYear()} ${session.start_time.getMonth()} ${session.start_time.getDate()}`;
-		const date2 = `${currentDate.getFullYear()} ${currentDate.getMonth()} ${currentDate.getDate()}`;
+		const date2 = `${selectedDate.getFullYear()} ${selectedDate.getMonth()} ${selectedDate.getDate()}`;
 		return date1 === date2;
 	});
 
@@ -28,7 +32,7 @@ const SessionDetails = ({ sessions, currentDate }) => {
 
 	for (let key in groupedSessions) {
 		hallsOnPage.push(
-			<CinemaHall hall={groupedSessions[key]} hall_id={key}/>
+			<MemoizedCinemaHall hall={groupedSessions[key]} hall_id={key} getSelectedDate={getSelectedDate} onSelectTime={onSelectTime} selectedTime={selectedTime}/>
 		)
 	}
 
@@ -37,6 +41,8 @@ const SessionDetails = ({ sessions, currentDate }) => {
 	// });
 
 	// console.log(sessionsOnPage);
+
+	console.log('RENDER SESSION DETAILS');
 
 	return (
 		<div class="session-details">

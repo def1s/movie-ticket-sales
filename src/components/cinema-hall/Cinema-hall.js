@@ -1,20 +1,26 @@
 import './cinema-hall.scss';
 
 import useCinemaServices from '../../services/CinemaServices';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CinemaHall = ({ hall, hall_id }) => {
+const CinemaHall = ({ hall, hall_id, onSelectTime, selectedTime }) => {
 	const {getHall, loading, error} = useCinemaServices();
 	const [hallInfo, setHallInfo] = useState([{}]);
+	const [selectedTimesIndexes, setSelectedTimesIndexes] = useState([]);
 
 	useEffect(() => {
 		getHall(`/halls/${hall_id}`)
 			.then(res => setHallInfo(res));
-	}, [hall]);
+	}, [hall_id]);
 
-	const times = hall.map(item => {
+	// const getTime = (hall) => {
+	// 	return hall
+	// }
+
+	const times = hall.map((item, index) => {
 		let hours = item.start_time.getHours();
 		let minutes = item.start_time.getMinutes();
+		let styles = '';
 
 		if (hours < 10) { //мб в функцию вынести, но мало кода, не знаю
 			hours = '0' + hours;
@@ -23,11 +29,22 @@ const CinemaHall = ({ hall, hall_id }) => {
 		if (minutes < 10) {
 			minutes = '0' + minutes;
 		}
-		return <div class="cinema-hall__time">{hours}:{minutes}</div>;
+
+		// console.log('Compare: ' + item.start_time.getTime());
+		// console.log('Selected time: ' + selectedTime.getTime());
+		// console.log('Res of compare: ' + (+item.start_time.getTime() == +selectedTime.getTime()));
+
+		if (+item.start_time.getTime() === +selectedTime.getTime()) {
+			styles = 'cinema-hall__time_current';
+		}
+
+		return <div class={`cinema-hall__time ${styles}`} key={index} onClick={() => onSelectTime(item.start_time)}>{hours}:{minutes}</div>;
 	});
 
 	const content = !loading && !error ? <View times={times} hallInfo={hallInfo} hall_id={hall_id}/> : null;
 	const isLoading = loading && !error ? <TestLoading/> : null; //заменить на нормальный компонент
+
+	console.log('RENDER CINEMA HALL');
 
 	return (
 		<>
@@ -37,10 +54,10 @@ const CinemaHall = ({ hall, hall_id }) => {
 	);
 }
 
-const View = ({ times, hallInfo }) => {
-	console.log(hallInfo);
+const View = React.memo(({ times, hallInfo }) => {
+	console.log('RENDER CINEMA HALL VIEW');
 	return (
-		<div class="cinema-hall">
+		<div class="cinema-hall" >
 
 			<div class="cinema-hall__info">
 				<div class="cinema-hall__name">{hallInfo[0].name}</div>
@@ -51,18 +68,11 @@ const View = ({ times, hallInfo }) => {
 				{
 					times
 				}
-				{/* <div class="cinema-hall__time cinema-hall__time_occupied">11:00</div>
-				<div class="cinema-hall__time cinema-hall__time_occupied">11:00</div>
-				<div class="cinema-hall__time cinema-hall__time_current">11:00</div>
-				<div class="cinema-hall__time">11:00</div>
-				<div class="cinema-hall__time">11:00</div>
-				<div class="cinema-hall__time">11:00</div>
-				<div class="cinema-hall__time">11:00</div> */}
 			</div>
 
 		</div>
 	)
-}
+});
 
 const TestLoading = () => { //заменить на нормальный компонент
 	return (

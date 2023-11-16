@@ -4,7 +4,7 @@ import Slider from '../slider/Slider';
 import { useEffect, useState } from 'react';
 
  
-const DateSelection = ({ sessions, getCurrentDate }) => {
+const DateSelection = ({ sessions, getSelectedDate }) => {
 	const [sortedSessions, setSortedSessions] = useState([]);
 	const [currentIndexDate, setCurrentIndexDate] = useState(-1);
 
@@ -41,7 +41,7 @@ const DateSelection = ({ sessions, getCurrentDate }) => {
 				class={`date-selection__date ${stylesBlock}`}
 				key={index} 
 				onClick={() => {
-					getCurrentDate(session.start_time);
+					getSelectedDate(session.start_time);
 					setCurrentIndexDate(index);
 				}}
 			>
@@ -52,6 +52,8 @@ const DateSelection = ({ sessions, getCurrentDate }) => {
 			</div>
 		);
 	});
+
+	console.log('RENDER DATE SELECTION');
 
 	return (
 		<div class="date-selection">
