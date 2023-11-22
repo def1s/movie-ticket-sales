@@ -23,7 +23,7 @@ const MovieSelection = () => {
 			.then(result => dispatch(filmsFetched(result)))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [getFilms]);
+	}, []);
 
 	const renderFilms = films.map((film, index) => {
 		return <Link className='movie_mr-82' to={`/order-movie/${film.film_id}`}><Movie cover={cover} title={film.title} key={index}/></Link>

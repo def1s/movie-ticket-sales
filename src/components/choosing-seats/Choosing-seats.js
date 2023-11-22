@@ -2,8 +2,7 @@ import './choosing-seats.scss';
 
 import Seats from '../seats/Seats';
 
-const ChoosingSeats = () => {
-	
+const ChoosingSeats = () => {	
 	return (
 		<section class="choosing-seats">
 			<div class="container">

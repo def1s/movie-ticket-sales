@@ -14,8 +14,8 @@ const App = () => {
 
 				<Routes>
 					<Route path={'/'} element={<MainPage/>}/>
-					<Route path={'/order-movie/:film_id/choosing-seat'} element={<ChoosingSeatPage/>}/>
 					<Route path={'/order-movie/:film_id'} element={<OrderMoviePage/>}/>
+					<Route path={'/order-movie/:film_id/choosing-seat'} element={<ChoosingSeatPage/>}/>
 					<Route path={'*'} element={'404'}/>
 				</Routes>
 

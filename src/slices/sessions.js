@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	sessions: []
+	sessions: [],
+	currentSessionId: -1
 };
 
 const sessionsSlice = createSlice({
@@ -10,6 +11,12 @@ const sessionsSlice = createSlice({
 	reducers: {
 		sessionsFetched: (state, action) => {
 			state.sessions = action.payload;
+		},
+		sessionIdSelected: (state, action) => {
+			state.currentSessionId = action.payload;
+		},
+		sessionIdReset: (state) => {
+			state.currentSessionId = -1;
 		}
 	}
 });
@@ -18,5 +25,7 @@ const {actions, reducer} = sessionsSlice;
 
 export default reducer;
 export const {
-	sessionsFetched
+	sessionsFetched,
+	sessionIdSelected,
+	sessionIdReset
 } = actions;

@@ -3,11 +3,24 @@ import './date-selection.scss';
 import Slider from '../slider/Slider';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { dateIndexSelecting, dateSelecting } from '../../slices/times';
+import { dateIndexSelecting, dateSelecting, dateReset, timeReset } from '../../slices/times';
+import { sessionIdReset } from '../../slices/sessions';
+import { useEffect } from 'react';
  
 const DateSelection = ({ sessions }) => {
 	const dispatch = useDispatch();
 	const selectedDateIndex = useSelector(state => state.times.selectedDateIndex);
+
+	useEffect(() => { //при первом рендере сбрасывается время, а также при изменении выбранной даты
+		dispatch(timeReset());
+		dispatch(sessionIdReset()); //а также сбрасывается id выбранной сессии
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedDateIndex]);
+
+	useEffect(() => {
+		dispatch(dateReset()); //при первом рендере сбрасывается дата
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 	const uniqueDates = []; //подумать о другом решении
@@ -20,17 +33,17 @@ const DateSelection = ({ sessions }) => {
 			uniqueDates.push(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
 		}
 
-		let stylesBlock = '';
-		let stylesWeekday = '';
+		let stylesBlock = 'date-selection__date';
+		let stylesWeekday = 'date-selection__weekday ';
 
 		if (selectedDateIndex === index) {
-			stylesBlock = 'date-selection__date_current';
-			stylesWeekday = 'date-selection__weekday_current';
+			stylesBlock += ' date-selection__date_current';
+			stylesWeekday += ' date-selection__weekday_current';
 		}
 
 		return (
 			<div 
-				class={`date-selection__date ${stylesBlock}`}
+				class={stylesBlock}
 				key={index} 
 				onClick={() => {
 					dispatch(dateSelecting(session.start_time.getTime()));
@@ -40,7 +53,7 @@ const DateSelection = ({ sessions }) => {
 				<div class="date-selection__number">
 					{session.start_time.getDate()} {session.start_time.toLocaleString('en-US', {month: 'short'})}
 				</div>
-				<div class={`date-selection__weekday ${stylesWeekday}`}>{daysOfWeek[session.start_time.getDay()]}</div>
+				<div class={stylesWeekday}>{daysOfWeek[session.start_time.getDay()]}</div>
 			</div>
 		);
 	});

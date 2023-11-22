@@ -4,6 +4,8 @@ const useCinemaServices = () => {
 
 	const {request, clearError, loading, error} = useHttp();
 
+
+	//снести все одинаковые функции
 	const getFilms = async (url) => {
 		const res = request(url);
 		return await res;
@@ -24,7 +26,12 @@ const useCinemaServices = () => {
 		return await res;
 	}
 
-	return {getFilms, getFilm, getSessions, getHall, loading, error, clearError};
+	const getTickets = async (url) => {
+		const res = request(url);
+		return await res;
+	}
+
+	return {getFilms, getFilm, getSessions, getHall, getTickets, loading, error, clearError};
 }
 
 export default useCinemaServices;

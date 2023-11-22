@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import CinemaHall from '../cinema-hall/Cinema-hall';
 
-const MemoizedCinemaHall = React.memo(CinemaHall);
+const MemoizedCinemaHall = React.memo(CinemaHall); //рано начал оптимизировать
 
 const SessionDetails = ({ sessions }) => {
 	const selectedDate = useSelector(state => new Date(state.times.selectedDate));

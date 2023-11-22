@@ -1,10 +1,12 @@
 import './film-preview.scss';
-
 import cover from '../../imgs/cover2.png';
 
 import Order from '../order/Order';
+import { useSelector } from 'react-redux';
 
 const FilmPreview = () => {
+	const film = useSelector(state => state.films.selectedFilm);
+
 	return (
 		<div class="film-preview film-preview_ml">
 
@@ -12,7 +14,7 @@ const FilmPreview = () => {
 				<div class="film-preview__cover">
 					<img src={cover} alt=""></img>
 				</div>
-				<div class="film-preview__title">SPIDER-MAN: NO WAY HOME</div>
+				<div class="film-preview__title">{film.title ? film.title : null}</div>
 				
 				<div class="film-preview__wrapper">
 					<div class="film-preview__label">Genre:</div>

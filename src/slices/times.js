@@ -18,6 +18,13 @@ const timesSlice = createSlice({
 		},
 		dateIndexSelecting: (state, action) => {
 			state.selectedDateIndex = action.payload;
+		},
+		dateReset: (state) => {
+			state.selectedDate = 0;
+			state.selectedDateIndex = -1;
+		},
+		timeReset: (state) => {
+			state.selectedTime = 0;
 		}
 	}
 });
@@ -28,5 +35,7 @@ export default reducer;
 export const {
 	timeSelecting,
 	dateSelecting,
-	dateIndexSelecting
+	dateIndexSelecting,
+	dateReset,
+	timeReset
 } = actions;
