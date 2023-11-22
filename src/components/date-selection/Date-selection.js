@@ -1,28 +1,20 @@
 import './date-selection.scss';
 
 import Slider from '../slider/Slider';
-import { useEffect, useState } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { dateIndexSelecting, dateSelecting } from '../../slices/times';
  
-const DateSelection = ({ sessions, getSelectedDate }) => {
-	const [sortedSessions, setSortedSessions] = useState([]);
-	const [currentIndexDate, setCurrentIndexDate] = useState(-1);
-
-	useEffect(() => {
-		const updatedSessions = sessions.map(session => ({
-			...session,
-			start_time: new Date(session.start_time)
-		})).sort((a, b) => a.start_time - b.start_time);
-
-
-		setSortedSessions(updatedSessions);
-	}, [sessions]);
+const DateSelection = ({ sessions }) => {
+	const dispatch = useDispatch();
+	const selectedDateIndex = useSelector(state => state.times.selectedDateIndex);
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const uniqueDates = [];
+	const uniqueDates = []; //подумать о другом решении
 
-	const dateOnPage = sortedSessions.map((session, index) => {
+	const renderDates = sessions.map((session, index) => {
 		if (uniqueDates.includes(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) { //выводим только уникальные даты
+			// eslint-disable-next-line array-callback-return
 			return;
 		} else {
 			uniqueDates.push(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
@@ -31,7 +23,7 @@ const DateSelection = ({ sessions, getSelectedDate }) => {
 		let stylesBlock = '';
 		let stylesWeekday = '';
 
-		if (currentIndexDate == index) {
+		if (selectedDateIndex === index) {
 			stylesBlock = 'date-selection__date_current';
 			stylesWeekday = 'date-selection__weekday_current';
 		}
@@ -41,8 +33,8 @@ const DateSelection = ({ sessions, getSelectedDate }) => {
 				class={`date-selection__date ${stylesBlock}`}
 				key={index} 
 				onClick={() => {
-					getSelectedDate(session.start_time);
-					setCurrentIndexDate(index);
+					dispatch(dateSelecting(session.start_time.getTime()));
+					dispatch(dateIndexSelecting(index));
 				}}
 			>
 				<div class="date-selection__number">
@@ -58,7 +50,7 @@ const DateSelection = ({ sessions, getSelectedDate }) => {
 	return (
 		<div class="date-selection">
 
-			<Slider marginRight={24} itemWidht={86} numOfVisibleSlides={5} slides={dateOnPage}/>
+			<Slider marginRight={24} itemWidht={86} numOfVisibleSlides={5} slides={renderDates}/>
 
 		</div>
 	);

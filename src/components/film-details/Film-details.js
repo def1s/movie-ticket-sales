@@ -6,25 +6,34 @@ import Divider from '../divider/Divider';
 import useCinemaServices from '../../services/CinemaServices';
 
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
+import { sessionsFetched } from '../../slices/sessions';
 
-const FilmDetails = ({ getSelectedDate, selectedDate, onSelectTime, selectedTime }) => {
-	const {getFilm, getSessions} = useCinemaServices();
-	const {film_id} = useParams();
+const FilmDetails = () => {
+	const { getSessions } = useCinemaServices();
+	const { film_id } = useParams();
+	
+	const dispatch = useDispatch();
 
-	const [film, setFilm] = useState([{}]);
-	const [sessions, setSessions] = useState([]);
+	const sortedSessionsSelector = createSelector(
+		(state) => state.sessions.sessions,
+		(sessions) => {
+			return sessions.map(session => ({
+				...session,
+				start_time: new Date(session.start_time)
+			})).sort((a, b) => a.start_time - b.start_time);
+		}
+	);
 
-	//ВОЗМОЖНО СТОИТ ПЕРЕНЕСТИ SESSION ИЗ dateSelection НА ЭТОТ УРОВЕНЬ (ОТСОРТИРОВАННЫЙ)
+	const sortedSessions = useSelector(sortedSessionsSelector);
 
 	useEffect(() => {
 		getSessions(`/sessions/${film_id}`)
-			.then(res => setSessions(res));
-	}, [film_id]);
-	
-	useEffect(() => {
-		getFilm(`/films/${film_id}`)
-			.then(res => setFilm(res));
+			.then(result => dispatch(sessionsFetched(result)))
+			.catch(err => console.log(err));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [film_id]);
 
 	console.log('RENDER FILM DETAILS');
@@ -32,18 +41,14 @@ const FilmDetails = ({ getSelectedDate, selectedDate, onSelectTime, selectedTime
 	return (
 		<div class="film-details">
 
-			<div class="film-details__label">{film_id}</div> {/* ORDER */}
+			<div class="film-details__label">ORDER</div>
 
-			<DateSelection film={film} sessions={sessions} getSelectedDate={getSelectedDate}/>
+			<DateSelection sessions={sortedSessions}/>
 
 			<Divider mods={'divider_mt'}/>
 
 			<SessionDetails 
-				sessions={sessions} 
-				selectedDate={selectedDate}
-				getSelectedDate={getSelectedDate}
-				onSelectTime={onSelectTime}
-				selectedTime={selectedTime}
+				sessions={sortedSessions} 
 			/>
 
 		</div>

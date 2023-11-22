@@ -1,5 +1,7 @@
 import './header.scss';
 
+import logo from '../../imgs/logo.png';
+
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -11,7 +13,7 @@ const Header = () => {
 
 					<Link to={'/'}>
 						<div class="logo">
-							<img src="../img/logo.png" alt="logo"></img>
+							<img src={logo} alt="logo"></img>
 						</div>
 					</Link>
 
