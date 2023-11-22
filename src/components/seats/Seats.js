@@ -10,7 +10,7 @@ const Seats = () => {
 	const dispatch = useDispatch();
 	const { getTickets } = useCinemaServices();
 
-	const tickets = useSelector(state => state.tickets.tickets);
+	const { tickets, selectedTickets} = useSelector(state => state.tickets); //selectedTickets - индексы выбранных билетов, tickets - массив с объектами билетов
 	const sessionId = useSelector(state => state.sessions.currentSessionId);
 	let time = useSelector(state => state.times.selectedTime);
 	time = new Date(time);
@@ -22,21 +22,40 @@ const Seats = () => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const onSelectingSeat = (index) => { //должна ли она принимать стейт, а не брать его из-за области ф-и?
+		for (const ticket of tickets) {
+			if (ticket.ticket_id === index) {
+				return;
+			}
+		}
+
+		dispatch(ticketsSelected(index));
+	}
+
 	const renderSeats = (rows, seatsInRow) => {
 		let seats = [];
 		let unicodeSymbol = 65;
 
-		for (let i = 0; i < rows; i++) {
+		for (let i = 0; i < rows; i++) { //неоптимизировано? может быть большая сложность в худшем случае
 			for (let j = 0; j < seatsInRow; j++) {
 				let classNames = 'seats__seat';
+				const key = i * seatsInRow + j + 1;
 
-				for (let k = 0; k < tickets.length; k++) {
-					if ((i * seatsInRow + j + 1) === tickets[k].ticket_id) {
+				for (const ticket of tickets) {
+					if (ticket.ticket_id === key) {
 						classNames += ' occupied-seat';
 					}
 				}
-				//сделать в неск. строк
-				seats.push(<div className={classNames} key={i * seatsInRow + j + 1} onClick={() => dispatch(ticketsSelected(i * seatsInRow + j + 1))}>{`${String.fromCharCode(unicodeSymbol)}${j + 1}`}</div>);
+
+				for (const ticket of selectedTickets) { //selectedTickets - индексы выбранных билетов
+					if (ticket === key) {
+						classNames += ' selected-seat';
+					}
+				}
+
+				
+				//сделать в неск. строк?
+				seats.push(<div className={classNames} key={key} onClick={() => onSelectingSeat(key)}>{`${String.fromCharCode(unicodeSymbol)}${j + 1}`}</div>);
 			}
 			unicodeSymbol++;
 		}

@@ -13,7 +13,13 @@ const ticketsSlice = createSlice({
 			state.tickets = action.payload;
 		},
 		ticketsSelected: (state, action) => {
-			state.selectedTickets.push(action.payload);
+			const index = state.selectedTickets.findIndex(ticket => ticket === action.payload);
+
+			if (index !== -1) {
+				state.selectedTickets.splice(index, 1);
+			} else {
+				state.selectedTickets.push(action.payload);
+			}
 		},
 		ticketsSelectedReset: (state) => {
 			state.selectedTickets = [];
