@@ -1,5 +1,24 @@
 .order-position {
-	font-size: 16px;
-	font-weight: 400;
-	color: #333333;
+	display: flex;
+	justify-content: space-between;
+
+	&_mt-16px {
+		margin-top: 16px;
+	}
+
+	&_mt-12px {
+		margin-top: 12px;
+	}	
+	
+	&__title {
+		font-size: 16px;
+		font-weight: 400;
+		color: #333333;
+
+		&_bold {
+			font-size: 16px;
+			font-weight: 700;
+			color: #333;
+		}
+	}
 }

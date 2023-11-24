@@ -47,16 +47,6 @@ const Order = () => {
 						renderDate={renderDate}
 					/>
  			}
-			{/* <div class="order__cinema-name">GRAND LONDON CINEMA</div>
-
-			<div class="order__date">{renderDate(selectedDate)}</div>
-
-			<div class="order__session-info">
-				<div class="order__hall-name">REGULAR 2D</div>
-				<div class="order__time">{renderTime(selectedTime)}</div>
-			</div>
-
-			<Link to={'/choosing-seat'}><button class="order__confirm-button">CONFIRM</button></Link> */}
 		</div>
 	);
 }

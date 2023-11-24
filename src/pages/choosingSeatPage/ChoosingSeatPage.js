@@ -1,5 +1,5 @@
-import ChoosingSeats from "../components/choosing-seats/Choosing-seats";
-import Footer from '../components/footer/Footer';
+import ChoosingSeats from "../../components/choosing-seats/Choosing-seats";
+import Footer from '../../components/footer/Footer';
 
 const ChoosingSeatPage = () => {
 	return (

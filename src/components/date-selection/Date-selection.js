@@ -23,14 +23,13 @@ const DateSelection = ({ sessions }) => {
 	}, []);
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const uniqueDates = []; //подумать о другом решении
+	const uniqueDates = new Set();
 
 	const renderDates = sessions.map((session, index) => {
-		if (uniqueDates.includes(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) { //выводим только уникальные даты
-			// eslint-disable-next-line array-callback-return
-			return;
+		if (!uniqueDates.has(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) {
+			uniqueDates.add(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
 		} else {
-			uniqueDates.push(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
+			return;
 		}
 
 		let stylesBlock = 'date-selection__date';

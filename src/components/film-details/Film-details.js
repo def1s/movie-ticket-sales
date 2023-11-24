@@ -29,23 +29,25 @@ const FilmDetails = () => {
 	);
 
 	const sortedSessions = useSelector(sortedSessionsSelector);
+	const films = useSelector(state => state.films.films);
 
 	useEffect(() => {
 		// dispatch(filmSelecting(film_id));
 		getSessions(`/sessions/${film_id}`)
 			.then(result => dispatch(sessionsFetched(result)))
 			.catch(err => console.log(err));
+
+		// getFilm(`/films/${film_id}`)
+		// 	.then(result => dispatch(filmSelecting(result[0])))
+		// 	.catch(err => console.log(err));
+		
+		for (const film of films) {
+			if (film.film_id == film_id) {
+				dispatch(filmSelecting(film));
+			}
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [film_id]);
-
-	useEffect(() => {
-		getFilm(`/films/${film_id}`)
-			.then(result => dispatch(filmSelecting(result[0])))
-			.catch(err => console.log(err));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [film_id]);
-
-	console.log('RENDER FILM DETAILS');
 
 	return (
 		<div class="film-details">
@@ -56,9 +58,7 @@ const FilmDetails = () => {
 
 			<Divider mods={'divider_mt'}/>
 
-			<SessionDetails 
-				sessions={sortedSessions} 
-			/>
+			<SessionDetails sessions={sortedSessions}/>
 
 		</div>
 	);

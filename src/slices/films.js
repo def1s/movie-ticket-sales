@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	films: [],
-	selectedFilm: {}
+	selectedFilm: {
+		film_id: -1,
+		title: '',
+		duration: -1,
+		description: '',
+		cover: []
+	}
 }
 
 const filmsSlice = createSlice({

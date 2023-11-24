@@ -6,13 +6,14 @@ import { useSelector } from 'react-redux';
 
 const FilmPreview = () => {
 	const film = useSelector(state => state.films.selectedFilm);
+	const imageUrl = `data:image/jpeg;base64,${film.cover}`;
 
 	return (
 		<div class="film-preview film-preview_ml">
 
 			<div class="film-preview__descr">
 				<div class="film-preview__cover">
-					<img src={cover} alt=""></img>
+					<img src={imageUrl} alt=""></img>
 				</div>
 				<div class="film-preview__title">{film.title ? film.title : null}</div>
 				
@@ -39,19 +40,6 @@ const FilmPreview = () => {
 			</div>
 
 			<Order/>
-
-			{/* <div class="order">
-				<div class="order__cinema-name">GRAND LONDON CINEMA</div>
-
-				<div class="order__date">15 December 2023</div>
-
-				<div class="order__session-info">
-					<div class="order__hall-name">REGULAR 2D</div>
-					<div class="order__time">11:00</div>
-				</div>
-
-				<a class="order__confirm-button" href="./chooise.html">CONFIRM</a> 
-			</div> */}
 
 		</div>
 	);

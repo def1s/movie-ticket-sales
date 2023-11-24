@@ -1,16 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	hall: [{}],
-	selectedHallId: -1
+	halls: [{}], //пока не использую
+	selectedHallName: ''
 };
 
 const hallsSlice = createSlice({
-	name: 'slices',
+	name: 'halls',
 	initialState,
 	reducers: {
-		hallSelecting: (state, action) => {
-			state.hall = action.payload;
+		hallsFetched: (state, action) => {
+			state.halls = action.payload;
+		},
+		hallSelected: (state, action) => {
+			state.selectedHallName = action.payload;
 		}
 	}
 });
@@ -19,5 +22,6 @@ const {actions, reducer} = hallsSlice;
 
 export default reducer;
 export const {
-	hallSelecting
+	hallsFetched,
+	hallSelected
 } = actions;

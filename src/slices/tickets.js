@@ -13,7 +13,7 @@ const ticketsSlice = createSlice({
 			state.tickets = action.payload;
 		},
 		ticketsSelected: (state, action) => {
-			const index = state.selectedTickets.findIndex(ticket => ticket === action.payload);
+			const index = state.selectedTickets.findIndex(ticket => ticket.index === action.payload.index); //проверка на повторение элементе
 
 			if (index !== -1) {
 				state.selectedTickets.splice(index, 1);

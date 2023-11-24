@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 
 import CinemaHall from '../cinema-hall/Cinema-hall';
 
-const MemoizedCinemaHall = React.memo(CinemaHall); //рано начал оптимизировать
-
 const SessionDetails = ({ sessions }) => {
 	const selectedDate = useSelector(state => new Date(state.times.selectedDate));
 
@@ -26,7 +24,7 @@ const SessionDetails = ({ sessions }) => {
 
 	for (let key in groupedSessions) {
 		hallsOnPage.push(
-			<MemoizedCinemaHall hall={groupedSessions[key]} hall_id={key}/>
+			<CinemaHall hall={groupedSessions[key]} hall_id={key}/> //добавить ключ
 		)
 	}
 

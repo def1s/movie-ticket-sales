@@ -22,40 +22,36 @@ const Seats = () => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const onSelectingSeat = (index) => { //должна ли она принимать стейт, а не брать его из-за области ф-и?
+	const onSelectingSeat = (index, name) => { //должна ли она принимать стейт, а не брать его из-за области ф-и?
 		for (const ticket of tickets) {
 			if (ticket.ticket_id === index) {
 				return;
 			}
 		}
 
-		dispatch(ticketsSelected(index));
+		dispatch(ticketsSelected({index, name}));
 	}
 
 	const renderSeats = (rows, seatsInRow) => {
 		let seats = [];
 		let unicodeSymbol = 65;
 
-		for (let i = 0; i < rows; i++) { //неоптимизировано? может быть большая сложность в худшем случае
+		for (let i = 0; i < rows; i++) {
 			for (let j = 0; j < seatsInRow; j++) {
 				let classNames = 'seats__seat';
 				const key = i * seatsInRow + j + 1;
 
-				for (const ticket of tickets) {
-					if (ticket.ticket_id === key) {
-						classNames += ' occupied-seat';
-					}
-				}
+				//проверка на занятость места исходя из того, содержится ли оно в полученных билетах с бд
+				const isOccupied = tickets.some(ticket => ticket.ticket_id === key);
+				//проверка на то, выбран ли билет пользователем
+				const isSelected = selectedTickets.some(ticket => ticket.index === key);
 
-				for (const ticket of selectedTickets) { //selectedTickets - индексы выбранных билетов
-					if (ticket === key) {
-						classNames += ' selected-seat';
-					}
-				}
+				classNames += isOccupied ? ' occupied-seat' : '';
+				classNames += isSelected ? ' selected-seat' : '';
 
-				
-				//сделать в неск. строк?
-				seats.push(<div className={classNames} key={key} onClick={() => onSelectingSeat(key)}>{`${String.fromCharCode(unicodeSymbol)}${j + 1}`}</div>);
+				const name = `${String.fromCharCode(unicodeSymbol)}${j + 1}`;
+
+				seats.push(<div className={classNames} key={key} onClick={() => onSelectingSeat(key, name)}>{name}</div>);
 			}
 			unicodeSymbol++;
 		}
