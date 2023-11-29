@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage } from "../../pages";
+import { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage } from "../../pages";
 
 import Header from '../header/Header';
 import PrivateRoute from "../privateRoute/PrivateRoute";
@@ -26,10 +26,11 @@ const App = () => {
 
 					</Route>
 
-					<Route path={'/login-success'} element={<LoginSuccess/>}/>
-
+					<Route path={'/registration'} element={<RegistrationPage/>}/>
 
 					<Route path={'/login'} element={<LoginPage/>}/>
+					<Route path={'/login-success'} element={<LoginSuccess/>}/>
+
 					<Route path={'*'} element={'404'}/>
 				</Routes>
 

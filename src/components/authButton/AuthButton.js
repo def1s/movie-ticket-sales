@@ -1,8 +1,8 @@
 import './authButton.scss';
 
-const AuthButton = ({mods, label}) => {
+const AuthButton = ({mods, label, onClickFunc}) => {
 	return (
-		<button className={`auth-button ${mods}`}>{label}</button>
+		<button className={`auth-button ${mods}`} onClick={onClickFunc}>{label}</button>
 	)
 }
 
