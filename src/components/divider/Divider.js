@@ -2,7 +2,7 @@ import './divider.scss';
 
 const Divider = ({mods}) => {
 	return (
-		<div class={`divider ${mods}`}></div>	
+		<div className={`divider ${mods}`}></div>	
 	);
 }
 

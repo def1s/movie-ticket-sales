@@ -1,35 +1,43 @@
 import './header.scss';
 
 import logo from '../../imgs/logo.png';
+import ex from '../../imgs/cover1.png'
 
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-	return (
-		<header class="header">
-			<div class="container">
+	const isAuth = useSelector(state => state.auth.isAuth);
 
-				<div class="header__content">
+	return (
+		<header className="header">
+			<div className="container">
+
+				<div className="header__content">
 
 					<Link to={'/'}>
-						<div class="logo">
+						<div className="logo">
 							<img src={logo} alt="logo"></img>
 						</div>
 					</Link>
 
-					<div class="header__nav">
+					<div className="header__nav">
 
-						<div class="header__label">Home</div>
-						<div class="header__label">My tickets</div>
-						<div class="header__label">Cinema news</div>
+						<div className="header__label">Home</div>
+						<div className="header__label">My tickets</div>
+						<div className="header__label">Cinema news</div>
 
-						<div class="header__notification">
+						{/* <div className="header__notification">
 							nt
-						</div>
+						</div> */}
 
-						<div class="header__avatar">
-							<img src="" alt="avatar"></img>
-						</div>
+						{
+							isAuth ?
+							<div className="header__avatar">
+								<img src={ex} alt="avatar"></img>
+							</div> :
+							<button className="header__sign-button">Log in</button>
+						}
 
 					</div>
 

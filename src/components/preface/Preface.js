@@ -2,19 +2,19 @@ import './preface.scss';
 
 const Preface = ({title, descr, link}) => {
 	return (
-		<div class="preface">
+		<div className="preface">
 
-			<div class="preface__descr">
-				<h3 class="preface__title">
+			<div className="preface__descr">
+				<h3 className="preface__title">
 					{title}
 				</h3>
 
-				<div class="preface__info">
+				<div className="preface__info">
 					{descr}
 				</div>
 			</div>
 
-			<a class="preface__proceed" href={link}>Show more...</a>
+			<a className="preface__proceed" href={link}>Show more...</a>
 
 		</div>
 	);

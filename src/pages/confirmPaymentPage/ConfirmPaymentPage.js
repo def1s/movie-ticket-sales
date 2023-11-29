@@ -1,23 +1,23 @@
-import './confirm-payment.scss';
+import './confirmPayment.scss';
 
 import Footer from "../../components/footer/Footer";
-import PaymentDetails from '../../components/payment-details/Payment-details';
-import ConfirmOrder from '../../components/confirm-order/Confirm-order';
+import PaymentDetails from '../../components/paymentDetails/PaymentDetails';
+import ConfirmOrder from '../../components/confirmOrder/ConfirmOrder';
 
 const ConfirmPaymentPage = () => {
 	return (
 		<>
 		
-			<section class="confirm-payment">
-				<div class="container">
+			<section className="confirm-payment">
+				<div className="container">
 
-					<div class="confirm-payment__header">Your order</div>
+					<div className="confirm-payment__header">Your order</div>
 				
-					<div class="confirm-payment__descr">
+					<div className="confirm-payment__descr">
 						Payment confirmation of your reserved seat
 					</div>
 
-					<div class="confirm-payment__wrapper">
+					<div className="confirm-payment__wrapper">
 
 						<PaymentDetails/>
 

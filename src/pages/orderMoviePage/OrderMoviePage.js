@@ -1,7 +1,7 @@
 import './chooise.scss';
 
-import FilmDetails from "../../components/film-details/Film-details";
-import FilmPreview from "../../components/film-preview/Film-preview";
+import FilmDetails from "../../components/filmDetails/FilmDetails";
+import FilmPreview from "../../components/filmPreview/FilmPreview";
 
 const OrderMoviePage = () => {
 	return (

@@ -1,12 +1,12 @@
 import './news.scss';
 
 import Preface from '../preface/Preface';
-import NewsCards from '../news-cards/News-cards';
+import NewsCards from '../newsCards/NewsCards';
 
 const News = ({modificators}) => {
 	return (
-		<section class={`news ${modificators}`}>
-			<div class="container">
+		<section className={`news ${modificators}`}>
+			<div className="container">
 
 				<Preface 
 					title='TIX ID News' 

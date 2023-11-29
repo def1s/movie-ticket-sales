@@ -33,7 +33,7 @@ const Order = () => {
 	};
 
 	return (
-		<div class="order">
+		<div className="order">
 
 			{
 				new Date(selectedDate).getTime() === 0 ? 
@@ -54,16 +54,16 @@ const Order = () => {
 const View = ({ selectedDate, selectedTime, renderDate, renderTime }) => {
 	return (
 		<>
-			<div class="order__cinema-name">GRAND LONDON CINEMA</div>
+			<div className="order__cinema-name">GRAND LONDON CINEMA</div>
 
-			<div class="order__date">{renderDate(selectedDate)}</div>
+			<div className="order__date">{renderDate(selectedDate)}</div>
 
-			<div class="order__session-info">
-				<div class="order__hall-name">REGULAR 2D</div>
-				<div class="order__time">{renderTime(selectedTime)}</div>
+			<div className="order__session-info">
+				<div className="order__hall-name">REGULAR 2D</div>
+				<div className="order__time">{renderTime(selectedTime)}</div>
 			</div>
 
-			<Link to={`choosing-seat`}><button class="order__confirm-button">CONFIRM</button></Link>
+			<Link to={`choosing-seat`}><button disabled={!(selectedDate && selectedTime)} className="order__confirm-button">CONFIRM</button></Link>
 		</>
 	)
 }

@@ -2,5 +2,6 @@ import MainPage from './mainPage/MainPage';
 import ChoosingSeatPage from './choosingSeatPage/ChoosingSeatPage';
 import OrderMoviePage from './orderMoviePage/OrderMoviePage';
 import ConfirmPaymentPage from './confirmPaymentPage/ConfirmPaymentPage';
+import LoginPage from './loginPage/LoginPage';
 
-export { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage };
+export { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage };

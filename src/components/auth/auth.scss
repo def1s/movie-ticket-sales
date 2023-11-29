@@ -1,0 +1,36 @@
+.auth {
+	background: url(../../imgs/login-bg.jpeg) center center/cover no-repeat;
+	height: 1200px;
+	// height: 100vh;
+
+	&__wrapper {
+		width: 1200px;
+		margin: 0 auto;
+		padding-top: 64px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__back-button {
+		font-size: 24px;
+		font-weight: 700;
+		width: 100px;
+		height: 100px;
+		color: #fff;
+	}
+
+	&__form-wrapper {
+		width: 740px;
+		height: 772px;
+		background-color: #fff;
+		padding-top: 98px;
+		padding-left: 80px;
+	}
+
+	&__header {
+		font-size: 36px;
+		font-weight: 700;
+	}
+
+
+}

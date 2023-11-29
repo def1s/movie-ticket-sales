@@ -8,10 +8,10 @@ import jon from '../../imgs/jon.png';
 const Advertisement = ({modificators}) => {
 
 	const ads = (
-		<div class="advertisement__item">
-			<h2 class="advertisement__title">SEWA/BELI FILM dan SERIAL di TIX ID sekarang!</h2>
+		<div className="advertisement__item">
+			<h2 className="advertisement__title">SEWA/BELI FILM dan SERIAL di TIX ID sekarang!</h2>
 
-			<img class="advertisement__cover" src={jon} alt='jon'></img>
+			<img className="advertisement__cover" src={jon} alt='jon'></img>
 		</div>
 	);
 

@@ -1,0 +1,30 @@
+.auth-button {
+	width: 423px;
+	height: 48px;
+	border: none;
+	border-radius: 5px;
+	font-size: 20px;
+	font-weight: 500;
+	cursor: pointer;
+
+	&_bg-blue {
+		background-color: #1A2C50;
+		color: #fff;
+	}
+
+	&_bg-white {
+		background-color: #fff;
+		color: #1A2C50;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #1A2C50;
+	}
+
+	&_mt-66 {
+		margin-top: 66px;
+	}
+
+	&_mt-46 {
+		margin-top: 46px;
+	}
+}

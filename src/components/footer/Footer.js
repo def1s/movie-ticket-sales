@@ -2,8 +2,8 @@ import './footer.scss';
 
 const Footer = () => {
 	return (
-		<footer class="footer">
-			<div class="container">
+		<footer className="footer">
+			<div className="container">
 
 				footer will be here
 

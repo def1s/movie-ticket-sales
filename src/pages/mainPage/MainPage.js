@@ -1,7 +1,7 @@
-import MovieSelection from '../../components/movie-selection/Movie-selection';
+import MovieSelection from '../../components/movieSelection/MovieSelection';
 import Advertisement from '../../components/advertisement/Advertisement';
 import News from '../../components/news/News';
-import ComingSoon from '../../components/coming-soon/Coming-soon';
+import ComingSoon from '../../components/comingSoon/ComingSoon';
 import Footer from '../../components/footer/Footer';
 
 const MainPage = () => {

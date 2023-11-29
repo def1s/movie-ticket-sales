@@ -16,8 +16,8 @@ const Seats = () => {
 	time = new Date(time);
 
 	useEffect(() => {
-		getTickets(`/tickets/${sessionId}`)
-			.then(result => dispatch(ticketsFetched(result)))
+		getTickets(`/api/tickets/${sessionId}`)
+			.then(result => dispatch(ticketsFetched(result.data)))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -81,35 +81,35 @@ const Seats = () => {
 	const seats = renderSeats(8, 20);
 
 	return (
-		<div class="seats">
-			<div class="seats__info">
-				<div class="seats__time">{renderTime(time)}</div>
+		<div className="seats">
+			<div className="seats__info">
+				<div className="seats__time">{renderTime(time)}</div>
 
-				<div class="seats__descr">
-					<div class="seats__status">
+				<div className="seats__descr">
+					<div className="seats__status">
 
-						<div class="seats__color occupied-seat"></div>
-						<div class="seats__name">Occupied</div>
-
-					</div>
-
-					<div class="seats__status">
-
-						<div class="seats__color empty-seat"></div>
-						<div class="seats__name">Empty</div>
+						<div className="seats__color occupied-seat"></div>
+						<div className="seats__name">Occupied</div>
 
 					</div>
 
-					<div class="seats__status">
+					<div className="seats__status">
 
-						<div class="seats__color selected-seat"></div>
-						<div class="seats__name">Selected</div>
+						<div className="seats__color empty-seat"></div>
+						<div className="seats__name">Empty</div>
+
+					</div>
+
+					<div className="seats__status">
+
+						<div className="seats__color selected-seat"></div>
+						<div className="seats__name">Selected</div>
 
 					</div>
 				</div>
 			</div>
 				
-			<div class="seats__grid">
+			<div className="seats__grid">
 				{
 					seats
 				}

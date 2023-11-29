@@ -9,13 +9,13 @@ export const useHttp = () => {
 
 		try {
 			const response = await fetch(url, {method, headers, body});
+			const res = await response.json();
 
 			if (!response.ok) {
-				throw new Error('Something went wrong with code ' + response.status);
+				throw res;
 			}
 			
 			setLoading(false);
-			const res = await response.json();
 			return res;
 		} catch(e) {
 			setLoading(false);

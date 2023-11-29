@@ -7,7 +7,7 @@ const initialState = {
 		title: '',
 		duration: -1,
 		description: '',
-		cover: []
+		cover: [] 
 	}
 }
 

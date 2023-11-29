@@ -45,7 +45,7 @@ const Slider = (props) => {
 		<div className="slider">
 
 			<div className="arrow" onClick={() => changeSlide(-1)}>
-				<img class="arrow" src={arrowToLeft} alt='arrow to left' ></img>
+				<img className="arrow" src={arrowToLeft} alt='arrow to left' ></img>
 			</div>
 
 			<div className="slider__wrapper" style={windowSliderStyles}>				
@@ -61,7 +61,7 @@ const Slider = (props) => {
 			</div>
 
 			<div className="arrow" onClick={() => changeSlide(1)}>
-				<img class="arrow" src={arrowToRight} alt='arrow to right'></img>
+				<img className="arrow" src={arrowToRight} alt='arrow to right'></img>
 			</div>
 
 		</div>
