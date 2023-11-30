@@ -28,7 +28,14 @@ const LoginPage = () => {
 				if (res.token) {
 					Cookies.set('jwtToken', res.token, { expires: 1 });
 					dispatch(setIsAuth(true));
-					navigate('/login-success');
+					
+					const previousPath = localStorage.getItem('previousPath');
+					if (previousPath) {
+						navigate(previousPath);
+						localStorage.removeItem('previousPath');
+					} else {
+						navigate('/');
+					}
 				}
 			})
 			.catch(error => {

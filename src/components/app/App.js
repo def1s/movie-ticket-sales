@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 
 import { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage } from "../../pages";
 
@@ -18,11 +18,14 @@ const App = () => {
 				<Routes>
 					<Route path={'/'} element={<MainPage/>}/>
 
-					<Route path={'/order-movie/:film_id'} element={<PrivateRoute/>}>
+					<Route path={'/order-movie/:film_id'}>
 
-						<Route path={''} element={<OrderMoviePage/>}/>
+						<Route index element={<OrderMoviePage/>}/>
 						<Route path={'choosing-seat'} element={<ChoosingSeatPage/>}/>
-						<Route path={'confirm-payment'} element={<ConfirmPaymentPage/>}/>
+
+						<Route path={'confirm-payment'} element={<PrivateRoute/>}>
+							<Route path={''} element={<ConfirmPaymentPage/>}/>
+						</Route>
 
 					</Route>
 
