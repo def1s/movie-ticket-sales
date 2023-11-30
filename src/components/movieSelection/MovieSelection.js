@@ -27,7 +27,17 @@ const MovieSelection = () => {
 	}, []);
 
 	const renderFilms = films.map((film, index) => { //рендер фильмов
-		return <Link className='movie_mr-82 movie' to={`/order-movie/${film.film_id}`}><Movie cover={film.cover} title={film.title} key={index}/></Link>
+		return (
+		<Link className='movie movie_mr-10' to={`/order-movie/${film.film_id}`}>
+			<Movie 
+				cover={film.cover} 
+				title={film.title} 
+				key={index}
+				movieMods='movie_wigth-379'
+				movieTitleMods='movie__title_font-size-24'
+				movieCoverMods='movie__cover_height-507'
+				/>
+		</Link>)
 	});
 
 	return (
@@ -37,7 +47,7 @@ const MovieSelection = () => {
 			<div className="container">
 
 				{!renderFilms.length ? <Spinner/> : null} {/* сделать по-другому */}
-				<Slider marginRight={82} itemWidht={500} slides={renderFilms} numOfVisibleSlides={2}/> 
+				<Slider marginRight={10} itemWidht={379} slides={renderFilms} numOfVisibleSlides={3}/> 
 
 			</div>
 		</section>

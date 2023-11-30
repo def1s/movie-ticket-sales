@@ -16,6 +16,13 @@
 		}
 	}
 
+	&_mr-10 {
+		margin-right: 10px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
 	&__cover {
 		width: 100%;
 		height: 707px;
