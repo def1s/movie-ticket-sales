@@ -4,5 +4,6 @@ import OrderMoviePage from './orderMoviePage/OrderMoviePage';
 import ConfirmPaymentPage from './confirmPaymentPage/ConfirmPaymentPage';
 import LoginPage from './loginPage/LoginPage';
 import RegistrationPage from './registrationPage/RegistrationPage';
+import TransactionsPage from './transactionsPage/TransactionsPage';
 
-export { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage };
+export { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage, TransactionsPage };

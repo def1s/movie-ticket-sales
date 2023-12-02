@@ -1,6 +1,10 @@
 .header {
 	height: 80px;
 	width: 100%;
+	// position: fixed;
+	// top: 0;
+	// z-index: 1000;
+	// background-color: #fff;
 	
 	&__content {
 		width: 100%;
@@ -20,6 +24,13 @@
 	&__label {
 		font-size: 18px;
 		font-weight: 500;
+		cursor: pointer;
+		text-decoration: none;
+		color: #000;
+
+		&:hover {
+			color: #cabd27;
+		}
 	}
 
 	&__avatar {

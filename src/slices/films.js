@@ -8,7 +8,8 @@ const initialState = {
 		duration: -1,
 		description: '',
 		cover: [] 
-	}
+	},
+	userFilms: []
 }
 
 const filmsSlice = createSlice({
@@ -20,6 +21,9 @@ const filmsSlice = createSlice({
 		},
 		filmSelecting: (state, action) => {
 			state.selectedFilm = action.payload
+		},
+		setUserFilms: (state, action) => {
+			state.userFilms = action.payload
 		}
 	}
 });
@@ -29,5 +33,6 @@ const {actions, reducer} = filmsSlice;
 export default reducer;
 export const {
 	filmsFetched,
-	filmSelecting
+	filmSelecting,
+	setUserFilms
 } = actions;

@@ -1,7 +1,7 @@
 import './header.scss';
 
 import logo from '../../imgs/logo.png';
-import ex from '../../imgs/cover1.png'
+import defaultAvatar from '../../imgs/default_avatar.svg';
 
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -22,6 +22,7 @@ const Header = () => {
 
 	useEffect(() => {
 		checkAuth(token);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [token]);
 
 	const onLogOut = () => {
@@ -34,7 +35,7 @@ const Header = () => {
 			return (
 				<>
 					<div className="header__avatar">
-						<img src={ex} alt="avatar"></img>
+						<img src={defaultAvatar} alt="avatar"></img>
 					</div>
 					<button className="header__sign-button" onClick={onLogOut}>Log out</button>	
 				</>
@@ -58,17 +59,12 @@ const Header = () => {
 
 					<div className="header__nav">
 
-						<div className="header__label">Home</div>
-						<div className="header__label">My tickets</div>
-						<div className="header__label">Cinema news</div>
+						<Link to={'/'} className="header__label">Home</Link>
+						<Link to={'/my-tickets'} className="header__label">My tickets</Link>
+						<Link to={'/'} className="header__label">Cinema news</Link>
 
 						{
 							renderUserProfile()
-							// isAuth ?
-							// <div className="header__avatar">
-							// 	<img src={ex} alt="avatar"></img>
-							// </div> :
-							// <button className="header__sign-button" onClick={() => navigate('/login')}>Log in</button>
 						}
 
 					</div>

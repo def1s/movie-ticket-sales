@@ -1,0 +1,18 @@
+.my-tickets {
+	// width: 768px;
+	width: 1127px;
+	// max-width: 1127px;
+	
+	&__header {
+		font-size: 24px;
+		font-weight: 400;
+		margin-top: 50px;
+	}
+
+	&__descr {
+		font-size: 16px;
+		font-weight: 400;
+		color: #5A637A;
+		margin-top: 11px;
+	}
+}

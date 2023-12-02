@@ -13,7 +13,7 @@ import { sessionsFetched } from '../../slices/sessions';
 import { filmSelecting } from '../../slices/films';
 
 const FilmDetails = () => {
-	const { getSessions } = useCinemaServices();
+	const { getData } = useCinemaServices();
 	const { film_id } = useParams();
 	
 	const dispatch = useDispatch();
@@ -34,13 +34,13 @@ const FilmDetails = () => {
 
 	useEffect(() => {
 		// dispatch(filmSelecting(film_id));
-		getSessions(`/api/sessions/${film_id}`)
+		getData(`/api/sessions/${film_id}`)
 			.then(result => dispatch(sessionsFetched(result.data)))
 			.catch(error => {
 				console.log(error);
 			});
 
-		// getFilm(`/films/${film_id}`)
+		// getData(`/films/${film_id}`)
 		// 	.then(result => dispatch(filmSelecting(result[0])))
 		// 	.catch(err => console.log(err));
 		

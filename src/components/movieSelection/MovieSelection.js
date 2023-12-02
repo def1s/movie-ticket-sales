@@ -13,14 +13,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { filmsFetched } from '../../slices/films';
 
 const MovieSelection = () => {
-	const { getFilms } = useCinemaServices();
+	const { getData } = useCinemaServices();
 	const dispatch = useDispatch();
 	const films = useSelector(state => state.films.films);
 
 	//получаем при первом рендере список фильмов
 	useEffect(() => {
 		//dispatch(filmsFetching); //добавить
-		getFilms('/api/films')
+		getData('/api/films')
 			.then(result => dispatch(filmsFetched(result.data)))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps

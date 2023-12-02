@@ -8,7 +8,7 @@ import { ticketsFetched, ticketsSelected } from '../../slices/tickets';
 
 const Seats = () => {
 	const dispatch = useDispatch();
-	const { getTickets } = useCinemaServices();
+	const { getData } = useCinemaServices();
 
 	const { tickets, selectedTickets} = useSelector(state => state.tickets); //selectedTickets - индексы выбранных билетов, tickets - массив с объектами билетов
 	const sessionId = useSelector(state => state.sessions.currentSessionId);
@@ -16,7 +16,7 @@ const Seats = () => {
 	time = new Date(time);
 
 	useEffect(() => {
-		getTickets(`/api/tickets/${sessionId}`)
+		getData(`/api/tickets/${sessionId}`)
 			.then(result => dispatch(ticketsFetched(result.data)))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +24,7 @@ const Seats = () => {
 
 	const onSelectingSeat = (index, name) => { //должна ли она принимать стейт, а не брать его из-за области ф-и?
 		for (const ticket of tickets) {
-			if (ticket.ticket_id === index) {
+			if (ticket.seat_num === index) {
 				return;
 			}
 		}
@@ -42,9 +42,9 @@ const Seats = () => {
 				const key = i * seatsInRow + j + 1;
 
 				//проверка на занятость места исходя из того, содержится ли оно в полученных билетах с бд
-				const isOccupied = tickets.some(ticket => ticket.ticket_id === key);
+				const isOccupied = tickets.some(ticket => ticket.seat_num === key);
 				//проверка на то, выбран ли билет пользователем
-				const isSelected = selectedTickets.some(ticket => ticket.index === key);
+				const isSelected = selectedTickets.some(selectedTicket => selectedTicket.index === key);
 
 				classNames += isOccupied ? ' occupied-seat' : '';
 				classNames += isSelected ? ' selected-seat' : '';

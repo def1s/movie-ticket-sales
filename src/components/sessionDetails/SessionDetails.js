@@ -24,7 +24,7 @@ const SessionDetails = ({ sessions }) => {
 
 	for (let key in groupedSessions) {
 		hallsOnPage.push(
-			<CinemaHall hall={groupedSessions[key]} hall_id={key}/> //добавить ключ
+			<CinemaHall hall={groupedSessions[key]} hall_id={key} key={key}/> //добавить ключ
 		)
 	}
 

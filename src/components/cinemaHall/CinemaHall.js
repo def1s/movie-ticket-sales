@@ -12,15 +12,15 @@ import { setSeatCost } from '../../slices/cost';
 import Spinner from '../spinner/Spinner';
 
 const CinemaHall = ({ hall, hall_id }) => { //изменить имя переменной hall
-	const {getHall, loading, error} = useCinemaServices();
+	const {getData, loading, error} = useCinemaServices();
 
 	const dispatch = useDispatch();
-	const selectedTime = useSelector(state => new Date(state.times.selectedTime));
+	const selectedTime = new Date(useSelector(state => state.times.selectedTime));
 
 	const [hallInfo, setHallInfo] = useState([{}]); //оптимизировать, каждый раз при новом выборе даты инфа грузится с сервера
 
 	useEffect(() => {
-		getHall(`/api/halls/${hall_id}`)
+		getData(`/api/halls/${hall_id}`)
 			.then(result => setHallInfo(result.data))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,11 +51,11 @@ const CinemaHall = ({ hall, hall_id }) => { //изменить имя перем
 		}
 
 		return (
-			<div 
+			<button 
 				className={`cinema-hall__time ${styles}`}
 				key={index} 
 				onClick={() => onSelectingTime(item, hallInfo)}
-			>{hours}:{minutes}</div>);
+			>{hours}:{minutes}</button>);
 	});
 
 	const content = !loading && !error ? <View times={renderTimes} hallInfo={hallInfo} hall_id={hall_id}/> : null;

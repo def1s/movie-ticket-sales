@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	tickets: [],
-	selectedTickets: []
+	selectedTickets: [],
+	userTickets: []
 };
 
 const ticketsSlice = createSlice({
@@ -23,6 +24,9 @@ const ticketsSlice = createSlice({
 		},
 		ticketsSelectedReset: (state) => {
 			state.selectedTickets = [];
+		},
+		setUserTickets: (state, action) => {
+			state.userTickets = action.payload;
 		}
 	}
 });
@@ -33,5 +37,6 @@ export default reducer;
 export const {
 	ticketsFetched,
 	ticketsSelected,
-	ticketsSelectedReset
+	ticketsSelectedReset,
+	setUserTickets
 } = actions;
