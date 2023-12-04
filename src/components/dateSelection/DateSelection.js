@@ -14,12 +14,10 @@ const DateSelection = ({ sessions }) => {
 	useEffect(() => { //при первом рендере сбрасывается время, а также при изменении выбранной даты
 		dispatch(timeReset());
 		dispatch(sessionIdReset()); //а также сбрасывается id выбранной сессии
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedDateIndex]);
 
 	useEffect(() => {
 		dispatch(dateReset()); //при первом рендере сбрасывается дата
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

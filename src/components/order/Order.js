@@ -62,7 +62,9 @@ const View = ({ selectedDate, selectedTime, renderDate, renderTime }) => {
 				<div className="order__time">{renderTime(selectedTime)}</div>
 			</div>
 
-			<Link to={`choosing-seat`}><button disabled={!(selectedDate && selectedTime)} className="order__confirm-button">CONFIRM</button></Link>
+			<Link to={`choosing-seat`}>
+				<button disabled={!(selectedDate && selectedTime)} className="order__confirm-button">CONFIRM</button>
+			</Link>
 		</>
 	)
 }
