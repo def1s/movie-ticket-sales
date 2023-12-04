@@ -23,46 +23,50 @@ const DateSelection = ({ sessions }) => {
 	}, []);
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const uniqueDates = new Set();
 
-	const renderDates = sessions.map((session, index) => {
-		if (!uniqueDates.has(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) {
-			uniqueDates.add(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
-		} else {
-			return;
-		}
+	const renderDates = (sessions) => {
+		const dates = [];
+		const uniqueDates = new Set();
 
-		let stylesBlock = 'date-selection__date';
-		let stylesWeekday = 'date-selection__weekday ';
+		sessions.forEach((session, index) => {
+			if (!uniqueDates.has(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) {
+				uniqueDates.add(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
 
-		if (selectedDateIndex === index) {
-			stylesBlock += ' date-selection__date_current';
-			stylesWeekday += ' date-selection__weekday_current';
-		}
+				let stylesBlock = 'date-selection__date';
+				let stylesWeekday = 'date-selection__weekday ';
 
-		return (
-			<div 
-				className={stylesBlock}
-				key={index} 
-				onClick={() => {
-					dispatch(dateSelecting(session.start_time.getTime()));
-					dispatch(dateIndexSelecting(index));
-				}}
-			>
-				<div className="date-selection__number">
-					{session.start_time.getDate()} {session.start_time.toLocaleString('en-US', {month: 'short'})}
-				</div>
-				<div className={stylesWeekday}>{daysOfWeek[session.start_time.getDay()]}</div>
-			</div>
-		);
-	});
+				if (selectedDateIndex === index) {
+					stylesBlock += ' date-selection__date_current';
+					stylesWeekday += ' date-selection__weekday_current';
+				}
+
+				dates.push(
+					<div
+						className={stylesBlock}
+						key={index}
+						onClick={() => {
+							dispatch(dateSelecting(session.start_time.getTime()));
+							dispatch(dateIndexSelecting(index));
+						}}
+					>
+						<div className="date-selection__number">
+							{session.start_time.getDate()} {session.start_time.toLocaleString('en-US', {month: 'short'})}
+						</div>
+						<div className={stylesWeekday}>{daysOfWeek[session.start_time.getDay()]}</div>
+					</div>
+				);
+			}
+		});
+
+		return dates;
+	};
 
 	// console.log('RENDER DATE SELECTION');
 
 	return (
 		<div className="date-selection">
 
-			<Slider marginRight={24} itemWidht={86} numOfVisibleSlides={5} slides={renderDates}/>
+			<Slider marginRight={24} itemWidht={86} numOfVisibleSlides={5} slides={renderDates(sessions)}/>
 
 		</div>
 	);
