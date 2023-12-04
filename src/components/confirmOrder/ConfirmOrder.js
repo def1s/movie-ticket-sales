@@ -11,7 +11,7 @@ import Cookies from 'js-cookie';
 import Spinner from "../spinner/Spinner";
 
 const ConfirmOrder = () => {
-	const { jwtAuthenticatedPostRequest, loading } = useCinemaServices();
+	const { jwtAuthenticatedPostRequest, loading  } = useCinemaServices();
 	const navigate = useNavigate();
 
 	const tickets = useSelector(state => state.tickets.selectedTickets);
@@ -19,13 +19,13 @@ const ConfirmOrder = () => {
 	const session_id = useSelector(state => state.sessions.currentSessionId);
 	const token = Cookies.get('jwtToken');
 
-	const renderOrderPosition = (tickets, ticketCost) => { //брать из глобала?
+	const renderOrderPosition = () => {
 		return tickets.map((ticket, index) => {
 			return <OrderPosition key={index} mods={'order-position_mt-12px'} title={`Seat ${ticket.name}`} cost={ticketCost}/>
 		});
 	};
 
-	const calculateTotal = (tickets, ticketCost) => {
+	const calculateTotal = () => {
 		return tickets.length * ticketCost;
 	};
 
@@ -49,23 +49,16 @@ const ConfirmOrder = () => {
 			
 			<ProductTitle mods={'product-title_mt-32px'}>Transaction details</ProductTitle> {/* насколько правильно работать через props.children? */}
 
-			{renderOrderPosition(tickets, ticketCost)}
-
+			{ renderOrderPosition() }
 			<Divider mods={'divider_mt-32px'}/>
 
 			<ProductTitle mods={'product-title_mt-32px'}>Promo & Discount</ProductTitle>
-
-			{/* <OrderPosition mods={'order-position_mt-16px'}/>
-
-			<OrderPosition mods={'order-position_mt-12px'}/> */}
-
 			<Divider mods={'divider_mt-32px'}/>
 
-			<OrderPosition mods={'order-position_mt-16px'} title={'Total'} cost={calculateTotal(tickets, ticketCost)}/>
-
+			<OrderPosition mods={'order-position_mt-16px'} title={'Total'} cost={ calculateTotal() }/>
 			<Divider mods={'divider_mt-17'}/>
 
-			<a href="" className="confirm-order__confirm-button" onClick={(e) => onBuying(e)}>BUY TICKETS</a> {/* поменять на кнопку? */}
+			<button className="confirm-order__confirm-button" onClick={(e) => onBuying(e)}>BUY TICKETS</button> {/* поменять на кнопку? */}
 
 			{ loading ? <Spinner/> : null }
 		</div>

@@ -15,32 +15,32 @@ const ChoosingSeats = () => {
 
 	useEffect(() => { //при первом заходе на стр сбрасываются выбранные места, которые могли остаться с прошлого выбора
 		dispatch(ticketsSelectedReset());
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const selectedSeats = useSelector(state => state.tickets.selectedTickets);
-	// const seatCost = useSelector(state => state.halls.selectedHallCost);
 	const seatCost = useSelector(state => state.cost.currentSeatCost);
 
-	const renderSelectedSeats = (seats) => { //нужно ли принимать аргументом места или можно обращаться к ним просто так?
-		if (!seats.length) {
-			return 'Pls seats';
+	const renderSelectedSeats = (seats) => {
+		if (!seats.length) { //если нет выбранных мест
+			return 'CHOOSE THE PLACE!';
 		}
 
 		return seats.map((seat, index) => {
-			if (index === seats.length - 1) {
+			if (index === seats.length - 1) { //для последнего элемента не рисуем запятую в конце
 				return seat.name;
 			}
 			
 			return seat.name + ', ';
 		});
-	}
+	};
+
+	const onReset = () => {
+		dispatch(ticketsSelectedReset());
+	};
 
 	return (
 		<section className="choosing-seats">
 			<div className="container">
-
-			
 				<div className="choosing-seats__header">CHOOSE A SEAT</div>
 
 				<div className="choosing-seats__descr">
@@ -48,7 +48,6 @@ const ChoosingSeats = () => {
 				</div>
 
 				<Seats/>
-
 			</div>
 
 			<div className="choosing-seats__movie-screen">The movie screen is here</div>
@@ -66,9 +65,10 @@ const ChoosingSeats = () => {
 						<div className="choosing-seats__current-selection">{renderSelectedSeats(selectedSeats)}</div>
 					</div>
 
-					<button className="choosing-seats__button choosing-seats__button_reset" onClick={() => dispatch(ticketsSelectedReset())}>Reset</button>
-					<Link to={`/order-movie/${film_id}/confirm-payment`}><button disabled={!selectedSeats.length} className="choosing-seats__button choosing-seats__button_confirm">CONFIRM</button></Link>
-					{/* костыль? */}
+					<button className="choosing-seats__button choosing-seats__button_reset" onClick={onReset}>Reset</button>
+					<Link to={`/order-movie/${film_id}/confirm-payment`}>
+						<button disabled={!selectedSeats.length} className="choosing-seats__button choosing-seats__button_confirm">CONFIRM</button>
+					</Link>
 
 				</div>
 

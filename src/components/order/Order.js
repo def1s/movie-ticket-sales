@@ -11,17 +11,17 @@ const Order = () => {
 		return (`${date.getDate()} ${date.toLocaleString('en-US', {month: 'long'})} ${date.getFullYear()}`);
 	};
 
-	const renderTime = (time) => { //повторяется, вынести в функ
+	const renderTime = (time) => {
 		time = new Date(time);
 
 		if (time.getTime() === 0) {
-			return 'Time pls';
+			return 'CHOOSE THE TIME!';
 		}
 
 		let hours = time.getHours();
 		let minutes = time.getMinutes();
 
-		if (hours < 10) { //мб в функцию вынести, но мало кода, не знаю
+		if (hours < 10) {
 			hours = '0' + hours;
 		}
 
@@ -34,11 +34,10 @@ const Order = () => {
 
 	return (
 		<div className="order">
-
 			{
 				new Date(selectedDate).getTime() === 0 ? 
 
-					<h2>Date pls</h2> :
+					<h2>CHOOSE THE DATE!</h2> :
 
 					 <View 
 					 	selectedDate={selectedDate} 

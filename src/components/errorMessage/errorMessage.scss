@@ -1,0 +1,20 @@
+.error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    border-color: #EC1E2B;;
+    width: 300px;
+    height: 100%;
+    margin: 0 auto;
+
+    &__message {
+        text-align: center;
+        color: #EC1E2B;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 500;
+    }
+}

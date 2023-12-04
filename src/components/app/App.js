@@ -13,7 +13,6 @@ import {
 
 import Header from '../header/Header';
 import PrivateRoute from "../privateRoute/PrivateRoute";
-import LoginSuccess from "../loginSuccess/LoginSuccess";
 
 const App = () => {
 
@@ -47,7 +46,6 @@ const App = () => {
 					<Route path={'/registration'} element={<RegistrationPage/>}/>
 
 					<Route path={'/login'} element={<LoginPage/>}/>
-					<Route path={'/login-success'} element={<LoginSuccess/>}/>
 
 					<Route path={'*'} element={'404'}/>
 				</Routes>

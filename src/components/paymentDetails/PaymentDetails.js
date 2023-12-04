@@ -48,7 +48,7 @@ const PaymentDetails = () => {
 			<div className="payment-details__info">{film.title.toUpperCase()}</div>
 			<div className="divider divider_mt-17"></div>
 
-			<div className="payment-details__title">Adress:</div>
+			<div className="payment-details__title">Address:</div>
 			<div className="payment-details__info">LONDON, {renderDate(time)}</div>
 			<div className="divider divider_mt-17"></div>
 

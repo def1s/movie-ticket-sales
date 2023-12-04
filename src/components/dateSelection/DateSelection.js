@@ -24,11 +24,14 @@ const DateSelection = ({ sessions }) => {
 
 	const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-	const renderDates = (sessions) => {
-		const dates = [];
+	const renderDates = (sessions) => { //рендерим данные
+		const dates = []; //то, что возвратим из функции
 		const uniqueDates = new Set();
 
-		sessions.forEach((session, index) => {
+		//задача состоит в том, чтобы убрать повторяющиеся даты из массива, поэтому создаем set
+
+		sessions.forEach((session, index) => { //проходимся по всем сессиям
+			//если сессии по дате нет в set, то идем дальше, такую дату еще не писали
 			if (!uniqueDates.has(`${session.start_time.getDate()} ${session.start_time.getMonth()}`)) {
 				uniqueDates.add(`${session.start_time.getDate()} ${session.start_time.getMonth()}`);
 
@@ -60,8 +63,6 @@ const DateSelection = ({ sessions }) => {
 
 		return dates;
 	};
-
-	// console.log('RENDER DATE SELECTION');
 
 	return (
 		<div className="date-selection">

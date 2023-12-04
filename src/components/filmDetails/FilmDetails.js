@@ -11,13 +11,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import { sessionsFetched } from '../../slices/sessions';
 import { filmSelecting } from '../../slices/films';
+import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 const FilmDetails = () => {
-	const { getData } = useCinemaServices();
-	const { film_id } = useParams();
+	const { getData, loading, error, clearError } = useCinemaServices();
+	const { film_id } = useParams(); //получение айди фильма из адресной строки
 	
 	const dispatch = useDispatch();
 
+	//получаем сессии и сортируем их, чтобы сразу правильно отображать в дальнейшем
+	//также в процессе просходит создание Date
 	const sortedSessionsSelector = createSelector(
 		(state) => state.sessions.sessions,
 		(sessions) => {
@@ -29,31 +33,39 @@ const FilmDetails = () => {
 	);
 
 	const sortedSessions = useSelector(sortedSessionsSelector);
-
 	const films = useSelector(state => state.films.films);
 
-	useEffect(() => {
-		// dispatch(filmSelecting(film_id));
+	useEffect(() => { //получаем сессии с нужным фильмом
+		clearError();
 		getData(`/api/sessions/${film_id}`)
 			.then(result => dispatch(sessionsFetched(result.data)))
 			.catch(error => {
 				console.log(error);
 			});
-
-		// getData(`/films/${film_id}`)
-		// 	.then(result => dispatch(filmSelecting(result[0])))
-		// 	.catch(err => console.log(err));
 		
-		for (const film of films) {
+		for (const film of films) { //находим выбранный фильм в массиве полученных
 			if (film.film_id == film_id) {
 				dispatch(filmSelecting(film));
 			}
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [film_id]);
 
+	const spinner = loading ? <Spinner/> : null;
+	const errorMessage = error ? <ErrorMessage/> : null;
+	const content = !(errorMessage || spinner) ? <View sortedSessions={sortedSessions}/> : null;
+
 	return (
-		<div className="film-details">
+		<div className={'film-details'}>
+			{ spinner }
+			{ errorMessage }
+			{ content }
+		</div>
+	);
+}
+
+const View = ({ sortedSessions }) => {
+	return (
+		<>
 
 			<div className="film-details__label">ORDER</div>
 
@@ -63,8 +75,8 @@ const FilmDetails = () => {
 
 			<SessionDetails sessions={sortedSessions}/>
 
-		</div>
+		</>
 	);
-}
+};
 
 export default FilmDetails;
