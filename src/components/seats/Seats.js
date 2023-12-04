@@ -5,10 +5,11 @@ import useCinemaServices from '../../services/CinemaServices';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ticketsFetched, ticketsSelected } from '../../slices/tickets';
+import Spinner from "../spinner/Spinner";
 
 const Seats = () => {
 	const dispatch = useDispatch();
-	const { getData } = useCinemaServices();
+	const { getData, loading } = useCinemaServices();
 
 	const { tickets, selectedTickets} = useSelector(state => state.tickets); //selectedTickets - индексы выбранных билетов, tickets - массив с объектами билетов
 	const sessionId = useSelector(state => state.sessions.currentSessionId);
@@ -111,7 +112,7 @@ const Seats = () => {
 				
 			<div className="seats__grid">
 				{
-					seats
+					loading ? <Spinner/> : seats
 				}
 			</div>
 

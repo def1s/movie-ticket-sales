@@ -6,10 +6,13 @@ import OrderPosition from '../orderPosition/OrderPosition';
 import useCinemaServices from '../../services/CinemaServices';
 
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import Spinner from "../spinner/Spinner";
 
 const ConfirmOrder = () => {
-	const { jwtAuthenticatedPostRequest } = useCinemaServices();
+	const { jwtAuthenticatedPostRequest, loading } = useCinemaServices();
+	const navigate = useNavigate();
 
 	const tickets = useSelector(state => state.tickets.selectedTickets);
 	const ticketCost = useSelector(state => state.cost.currentSeatCost);
@@ -34,7 +37,9 @@ const ConfirmOrder = () => {
 		};
 	
 		jwtAuthenticatedPostRequest('/api/tickets/add', JSON.stringify(data), token)
-			.then(res => console.log(res))
+			.then(res => {
+				navigate('/payment-successful');
+			})
 			.catch(error => console.log(error));
 	};
 
@@ -62,6 +67,7 @@ const ConfirmOrder = () => {
 
 			<a href="" className="confirm-order__confirm-button" onClick={(e) => onBuying(e)}>BUY TICKETS</a> {/* поменять на кнопку? */}
 
+			{ loading ? <Spinner/> : null }
 		</div>
 	);
 }

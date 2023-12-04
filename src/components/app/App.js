@@ -1,6 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage, TransactionsPage } from "../../pages";
+import {
+	MainPage,
+	ChoosingSeatPage,
+	OrderMoviePage,
+	ConfirmPaymentPage,
+	LoginPage,
+	RegistrationPage,
+	TransactionsPage,
+	PaymentSuccessfulPage
+} from "../../pages";
 
 import Header from '../header/Header';
 import PrivateRoute from "../privateRoute/PrivateRoute";
@@ -29,11 +38,11 @@ const App = () => {
 
 					</Route>
 
-					{/* <Route path={'/my-tickets'} element={<TransactionsPage/>}/> */}
-
 					<Route path={'/my-tickets'} element={<PrivateRoute/>}>
 						<Route index element={<TransactionsPage/>}/>
 					</Route>
+
+					<Route path={'/payment-successful'} element={<PaymentSuccessfulPage/>}/>
 
 					<Route path={'/registration'} element={<RegistrationPage/>}/>
 

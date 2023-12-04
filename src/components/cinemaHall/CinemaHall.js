@@ -17,11 +17,11 @@ const CinemaHall = ({ hall, hall_id }) => { //изменить имя перем
 	const dispatch = useDispatch();
 	const selectedTime = new Date(useSelector(state => state.times.selectedTime));
 
-	const [hallInfo, setHallInfo] = useState([{}]); //оптимизировать, каждый раз при новом выборе даты инфа грузится с сервера
+	const [hallInfo, setHallInfo] = useState([{}]);
 
 	useEffect(() => {
 		getData(`/api/halls/${hall_id}`)
-			.then(result => setHallInfo(result.data))
+			.then(result => setHallInfo(result.data[0]))
 			.catch(err => console.log(err));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [hall_id]);
@@ -29,8 +29,8 @@ const CinemaHall = ({ hall, hall_id }) => { //изменить имя перем
 	const onSelectingTime = (item, hallInfo) => {
 		dispatch(timeSelecting(item.start_time.getTime()));
 		dispatch(sessionIdSelected(item.session_id));
-		dispatch(setSeatCost(hallInfo[0].cost)); //не забыть прикрутить сброс selectedHallCost
-		dispatch(hallSelected(hallInfo[0].name));
+		dispatch(setSeatCost(hallInfo.cost));
+		dispatch(hallSelected(hallInfo.name));
 	};
 
 	const renderTimes = hall.map((item, index) => {
@@ -61,8 +61,6 @@ const CinemaHall = ({ hall, hall_id }) => { //изменить имя перем
 	const content = !loading && !error ? <View times={renderTimes} hallInfo={hallInfo} hall_id={hall_id}/> : null;
 	const isLoading = loading && !error ? <Spinner/> : null;
 
-	// console.log('RENDER CINEMA HALL');
-
 	return (
 		<>
 			{content}
@@ -72,13 +70,12 @@ const CinemaHall = ({ hall, hall_id }) => { //изменить имя перем
 }
 
 const View = React.memo(({ times, hallInfo }) => {
-	// console.log('RENDER CINEMA HALL VIEW');
 	return (
 		<div className="cinema-hall" >
 
 			<div className="cinema-hall__info">
-				<div className="cinema-hall__name">{hallInfo[0].name}</div> {/* убрать обращение через первый элемент в массиве */}
-				<div className="cinema-hall__cost">{hallInfo[0].cost}$</div>
+				<div className="cinema-hall__name">{hallInfo.name}</div>
+				<div className="cinema-hall__cost">{hallInfo.cost}$</div>
 			</div>
 
 			<div className="cinema-hall__times">

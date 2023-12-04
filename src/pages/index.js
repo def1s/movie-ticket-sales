@@ -5,5 +5,15 @@ import ConfirmPaymentPage from './confirmPaymentPage/ConfirmPaymentPage';
 import LoginPage from './loginPage/LoginPage';
 import RegistrationPage from './registrationPage/RegistrationPage';
 import TransactionsPage from './transactionsPage/TransactionsPage';
+import PaymentSuccessfulPage from "./paymentSuccessfulPage/PaymentSuccessfulPage";
 
-export { MainPage, ChoosingSeatPage, OrderMoviePage, ConfirmPaymentPage, LoginPage, RegistrationPage, TransactionsPage };
+export {
+    MainPage,
+    ChoosingSeatPage,
+    OrderMoviePage,
+    ConfirmPaymentPage,
+    LoginPage,
+    RegistrationPage,
+    TransactionsPage,
+    PaymentSuccessfulPage
+};

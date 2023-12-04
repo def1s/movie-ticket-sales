@@ -28,8 +28,6 @@ const SessionDetails = ({ sessions }) => {
 		)
 	}
 
-	// console.log('RENDER SESSION DETAILS');
-
 	return (
 		<div className="session-details">
 

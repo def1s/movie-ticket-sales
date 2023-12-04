@@ -1,0 +1,46 @@
+.payment-successful {
+
+    &__header {
+        margin-top: 40px;
+        font-size: 56px;
+        font-style: normal;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &__img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__descr {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 137.2%;
+        width: 680px;
+        margin: 0 auto;
+        margin-top: 51px;
+        color: #5A637A;
+    }
+
+    &__my-tickets-button {
+        display: block;
+        width: 216px;
+        height: 64px;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        color: #9DA8BE;
+        background-color: #fff;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 8px;
+        border-color: #5A637A;
+        margin: 0 auto;
+        margin-top: 36px;
+        padding-top: 16px;
+        text-align: center;
+        text-decoration: none;
+    }
+}
