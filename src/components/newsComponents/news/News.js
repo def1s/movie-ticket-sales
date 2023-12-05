@@ -1,6 +1,6 @@
 import './news.scss';
 
-import Preface from '../preface/Preface';
+import Preface from '../../preface/Preface';
 import NewsCards from '../newsCards/NewsCards';
 
 const News = ({modificators}) => {

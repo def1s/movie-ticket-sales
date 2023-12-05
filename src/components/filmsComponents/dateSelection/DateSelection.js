@@ -1,10 +1,10 @@
 import './dateSelection.scss';
 
-import Slider from '../slider/Slider';
+import Slider from '../../slider/Slider';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { dateIndexSelecting, dateSelecting, dateReset, timeReset } from '../../slices/times';
-import { sessionIdReset } from '../../slices/sessions';
+import { dateIndexSelecting, dateSelecting, dateReset, timeReset } from '../../../slices/times';
+import { sessionIdReset } from '../../../slices/sessions';
 import { useEffect } from 'react';
  
 const DateSelection = ({ sessions }) => {

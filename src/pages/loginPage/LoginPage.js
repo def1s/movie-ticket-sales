@@ -1,6 +1,6 @@
 import Auth from "../../components/auth/Auth";
-import AuthButton from "../../components/authButton/AuthButton";
-import AuthField from "../../components/authField/AuthField";
+import AuthButton from "../../components/common/authButton/AuthButton";
+import AuthField from "../../components/common/authField/AuthField";
 import useCinemaServices from "../../services/CinemaServices";
 
 import { useDispatch } from "react-redux";

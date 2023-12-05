@@ -1,7 +1,7 @@
 import './comingSoon.scss';
 
 import Preface from '../preface/Preface';
-import Movie from '../movie/Movie';
+import Movie from '../movieComponents/movie/Movie';
 
 import cover from '../../imgs/cover1.png';
 
@@ -41,41 +41,6 @@ const ComingSoon = () => {
 						cover={cover}
 					/>
 					
-					{/* <a className="movie movie_wigth-379">
-						<img src="./img/cover1.png" alt="" className="movie__cover movie__cover_height-507"></img>
-						<h2 className="movie__title movie__title_font-size-24 movie__title_text-align-left">
-							Spider-Man: No Way Home
-						</h2>
-						<div className="movie__tags movie__tags_jc-left">
-							<div className="movie__tag">XXL</div>
-							<div className="movie__tag">3D</div>
-							<div className="movie__tag">IMAX</div>
-						</div>
-					</a>
-
-					<a className="movie movie_wigth-379">
-						<img src="./img/cover2.png" alt="" className="movie__cover movie__cover_height-507"></img>
-						<h2 className="movie__title movie__title_font-size-24 movie__title_text-align-left">
-							Spider-Man: No Way Home
-						</h2>
-						<div className="movie__tags movie__tags_jc-left">
-							<div className="movie__tag">XXL</div>
-							<div className="movie__tag">3D</div>
-							<div className="movie__tag">IMAX</div>
-						</div>
-					</a>
-
-					<a className="movie movie_wigth-379">
-						<img src="./img/cover1.png" alt="" className="movie__cover movie__cover_height-507"></img>
-						<h2 className="movie__title movie__title_font-size-24 movie__title_text-align-left">
-							Spider-Man: No Way Home
-						</h2>
-						<div className="movie__tags movie__tags_jc-left">
-							<div className="movie__tag">XXL</div>
-							<div className="movie__tag">3D</div>
-							<div className="movie__tag">IMAX</div>
-						</div>
-					</a> */}
 				</div>
 
 			</div>

@@ -1,6 +1,5 @@
 import './confirmPayment.scss';
 
-import Footer from "../../components/footer/Footer";
 import PaymentDetails from '../../components/paymentDetails/PaymentDetails';
 import ConfirmOrder from '../../components/confirmOrder/ConfirmOrder';
 
@@ -27,7 +26,6 @@ const ConfirmPaymentPage = () => {
 
 				</div>
 			</section>
-			<Footer/>
 
 		</>
 	)

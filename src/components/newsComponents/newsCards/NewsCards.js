@@ -2,7 +2,7 @@ import './newsCards.scss';
 
 import NewsCard from '../newsCard/NewsCard';
 
-import img from '../../imgs/news1.png';
+import img from '../../../imgs/news1.png';
 
 const NewsCards = () => {
 	return (

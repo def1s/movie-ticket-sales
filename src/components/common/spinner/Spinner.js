@@ -1,5 +1,5 @@
 import './spinner.scss';
-import spinner from '../../imgs/spinner.gif';
+import spinner from '../../../imgs/spinner.gif';
 
 const Spinner = () => {
 	return (

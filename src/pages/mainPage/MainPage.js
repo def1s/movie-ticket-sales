@@ -1,8 +1,7 @@
-import MovieSelection from '../../components/movieSelection/MovieSelection';
+import MovieSelection from '../../components/movieComponents/movieSelection/MovieSelection';
 import Advertisement from '../../components/advertisement/Advertisement';
-import News from '../../components/news/News';
+import News from '../../components/newsComponents/news/News';
 import ComingSoon from '../../components/comingSoon/ComingSoon';
-import Footer from '../../components/footer/Footer';
 
 const MainPage = () => {
 	return (
@@ -15,8 +14,6 @@ const MainPage = () => {
 			<News modificators={'news_mt-180'}/>
 
 			<ComingSoon/>
-
-			<Footer/>
 
 		</>
 	);

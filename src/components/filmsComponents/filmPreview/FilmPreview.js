@@ -1,6 +1,6 @@
 import './filmPreview.scss';
 
-import Order from '../order/Order';
+import Order from '../../orderComponents/order/Order';
 import { useSelector } from 'react-redux';
 
 const FilmPreview = () => {

@@ -3,7 +3,7 @@ import './sessionDetails.scss';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import CinemaHall from '../cinemaHall/CinemaHall';
+import CinemaHall from '../filmsComponents/cinemaHall/CinemaHall';
 
 const SessionDetails = ({ sessions }) => {
 	const selectedDate = new Date(useSelector(state => state.times.selectedDate));

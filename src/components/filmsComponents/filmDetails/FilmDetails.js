@@ -1,18 +1,18 @@
 import './filmDetails.scss';
 
 import DateSelection from '../dateSelection/DateSelection';
-import SessionDetails from '../sessionDetails/SessionDetails';
-import Divider from '../divider/Divider';
-import useCinemaServices from '../../services/CinemaServices';
+import SessionDetails from '../../sessionDetails/SessionDetails';
+import Divider from '../../common/divider/Divider';
+import useCinemaServices from '../../../services/CinemaServices';
 
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
-import { sessionsFetched } from '../../slices/sessions';
-import { filmSelecting } from '../../slices/films';
-import Spinner from "../spinner/Spinner";
-import ErrorMessage from "../errorMessage/ErrorMessage";
+import { sessionsFetched } from '../../../slices/sessions';
+import { filmSelecting } from '../../../slices/films';
+import Spinner from "../../common/spinner/Spinner";
+import ErrorMessage from "../../common/errorMessage/ErrorMessage";
 
 const FilmDetails = () => {
 	const { getData, loading, error, clearError } = useCinemaServices();
@@ -27,7 +27,7 @@ const FilmDetails = () => {
 		(sessions) => {
 			return sessions.map(session => ({
 				...session,
-				start_time: new Date(new Date(session.start_time) - 10800 * 1000)
+				start_time: new Date(session.start_time.split('').slice(0, session.start_time.length - 1).join(''))
 			})).sort((a, b) => a.start_time.getTime() - b.start_time.getTime());
 		}
 	);

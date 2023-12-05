@@ -2,7 +2,7 @@ import {  Navigate, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import useCinemaServices from "../../services/CinemaServices";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../common/spinner/Spinner";
 import Cookies from "js-cookie";
 import useAuthCheck from "../../hooks/useAuthCheck";
 

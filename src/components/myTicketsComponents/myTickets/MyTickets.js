@@ -1,17 +1,18 @@
 import './myTickets.scss';
 
-import Ticket from '../ticket/Ticket';
-import Spinner from '../spinner/Spinner';
-import useCinemaServices from '../../services/CinemaServices';
+import Ticket from '../../ticket/Ticket';
+import Spinner from '../../common/spinner/Spinner';
+import useCinemaServices from '../../../services/CinemaServices';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import { setUserTickets } from '../../slices/tickets';
-import { sessionsFetched } from '../../slices/sessions';
-import { filmsFetched } from '../../slices/films';
-import { hallsFetched } from '../../slices/halls';
-import Divider from '../divider/Divider';
+import { setUserTickets } from '../../../slices/tickets';
+import { sessionsFetched } from '../../../slices/sessions';
+import { filmsFetched } from '../../../slices/films';
+import { hallsFetched } from '../../../slices/halls';
+import Divider from '../../common/divider/Divider';
 import { createSelector } from '@reduxjs/toolkit';
+import ErrorMessage from '../../common/errorMessage/ErrorMessage'
 
 const MyTickets = () => {
 	const { getAuthenticatedData, getData, loading, error } = useCinemaServices();
@@ -31,7 +32,8 @@ const MyTickets = () => {
 				const hall = halls.find(h => session && session.hall_id === h.hall_id);
 
 				return {
-					date: session ? new Date(session.start_time) : new Date(),
+					// date: session ? new Date(new Date(session.start_time).getTime() - 10800 * 1000) : new Date(),
+					date: session ? new Date(session.start_time.split('').slice(0, session.start_time.length - 1).join('')) : new Date(),
 					title : film ? film.title : '',
 					hallName: hall ? hall.name : '',
 					cover: film ? film.cover : '',
@@ -82,17 +84,19 @@ const MyTickets = () => {
 		});
 	};
 
-	const content = !loading ? renderUserTickets() : null;
+	const errorMessage = error ? <ErrorMessage/> : null;
 	const isLoading = loading ? <Spinner/> : null;
-	const isEmpty = !loading && !content.length ? 'Is empty' : null;
+	const content = !(isLoading || errorMessage) ? renderUserTickets() : null;
+	const isEmpty = !loading && !content.length ? <div className="my-tickets__message">IS EMPTY!</div> : null;
 
 	return (
 		<div className="my-tickets">
 			<h2 className="my-tickets__header">My tickets</h2>
-			<div className="my-tickets__descr">Tickets!</div>
+			<div className="my-tickets__descr">It contains all the tickets you've ever bought.</div>
 
 			{ content }
 			{ isLoading }
+			{ errorMessage }
 			{ isEmpty }
 
 		</div>

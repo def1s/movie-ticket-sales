@@ -1,15 +1,15 @@
 import './cinemaHall.scss';
 
-import useCinemaServices from '../../services/CinemaServices';
+import useCinemaServices from '../../../services/CinemaServices';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { timeSelecting } from '../../slices/times';
-import { sessionIdSelected } from '../../slices/sessions';
-import { hallSelected } from '../../slices/halls';
-import { setSeatCost } from '../../slices/cost';
+import { timeSelecting } from '../../../slices/times';
+import { sessionIdSelected } from '../../../slices/sessions';
+import { hallSelected } from '../../../slices/halls';
+import { setSeatCost } from '../../../slices/cost';
 
-import Spinner from '../spinner/Spinner';
+import Spinner from '../../common/spinner/Spinner';
 
 const CinemaHall = ({ hall, hall_id }) => { //изменить имя переменной hall
 	const {getData, loading, error} = useCinemaServices();

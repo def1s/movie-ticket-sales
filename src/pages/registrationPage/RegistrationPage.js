@@ -1,6 +1,6 @@
 import Auth from "../../components/auth/Auth";
-import AuthField from "../../components/authField/AuthField";
-import AuthButton from "../../components/authButton/AuthButton";
+import AuthField from "../../components/common/authField/AuthField";
+import AuthButton from "../../components/common/authButton/AuthButton";
 
 import useCinemaServices from "../../services/CinemaServices";
 import { useState } from "react";

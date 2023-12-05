@@ -2,16 +2,16 @@ import './movieSelection.scss';
 import '../movie/movie.scss';
 
 import Movie from '../movie/Movie';
-import Slider from '../slider/Slider';
-import useCinemaServices from '../../services/CinemaServices';
-import Spinner from '../spinner/Spinner';
+import Slider from '../../slider/Slider';
+import useCinemaServices from '../../../services/CinemaServices';
+import Spinner from '../../common/spinner/Spinner';
 
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { filmsFetched } from '../../slices/films';
-import ErrorMessage from "../errorMessage/ErrorMessage";
+import { filmsFetched } from '../../../slices/films';
+import ErrorMessage from "../../common/errorMessage/ErrorMessage";
 
 const MovieSelection = () => {
 	const { getData, loading, error, clearError } = useCinemaServices();

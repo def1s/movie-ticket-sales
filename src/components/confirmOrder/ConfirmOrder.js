@@ -1,14 +1,14 @@
 import './confirmOrder.scss';
 
 import ProductTitle from '../productTitle/ProductTitle';
-import Divider from '../divider/Divider';
-import OrderPosition from '../orderPosition/OrderPosition';
+import Divider from '../common/divider/Divider';
+import OrderPosition from '../orderComponents/orderPosition/OrderPosition';
 import useCinemaServices from '../../services/CinemaServices';
 
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
-import Spinner from "../spinner/Spinner";
+import Spinner from "../common/spinner/Spinner";
 
 const ConfirmOrder = () => {
 	const { jwtAuthenticatedPostRequest, loading  } = useCinemaServices();

@@ -1,3 +1,5 @@
+import './app.scss';
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import {
@@ -12,16 +14,17 @@ import {
 } from "../../pages";
 
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import PrivateRoute from "../privateRoute/PrivateRoute";
 
 const App = () => {
 
 	return (
-		<>
+		<div className="app">
 
 			<Router> 
 
-			<Header/>
+				<Header/>
 
 				<Routes>
 					<Route path={'/'} element={<MainPage/>}/>
@@ -51,8 +54,10 @@ const App = () => {
 				</Routes>
 
 			</Router>
+
+			<Footer/>
 		
-		</>
+		</div>
 	);
 }
 

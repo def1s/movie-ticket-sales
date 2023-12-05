@@ -5,7 +5,7 @@ import useCinemaServices from '../../services/CinemaServices';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ticketsFetched, ticketsSelected } from '../../slices/tickets';
-import Spinner from "../spinner/Spinner";
+import Spinner from "../common/spinner/Spinner";
 
 const Seats = () => {
 	const dispatch = useDispatch();

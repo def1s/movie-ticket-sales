@@ -66,10 +66,12 @@ const ChoosingSeats = () => {
 					</div>
 
 					<button className="choosing-seats__button choosing-seats__button_reset" onClick={onReset}>Reset</button>
-					<Link to={`/order-movie/${film_id}/confirm-payment`}>
-						<button disabled={!selectedSeats.length} className="choosing-seats__button choosing-seats__button_confirm">CONFIRM</button>
-					</Link>
 
+					<Link 
+						disabled={!selectedSeats.length} 
+						className="choosing-seats__button choosing-seats__button_confirm choosing-seats__button_pt-12"
+						to={`/order-movie/${film_id}/confirm-payment`}
+					>CONFIRM</Link>
 				</div>
 
 			</div>

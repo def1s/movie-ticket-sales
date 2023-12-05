@@ -51,7 +51,6 @@
 		font-size: 36px;
 		font-weight: 700;
 		color: #333333;
-		// width: ;
 	}
 
 	&__button {
@@ -62,11 +61,17 @@
 		background-color: #fff;
 		cursor: pointer;
 		transition: all 0.5s;
+		text-align: center;
+		text-decoration: none;
 
 		&:disabled {
 			background-color: #bbb;
 			border: none;
 			color: #000;
+		}
+
+		&_pt-12 {
+			padding-top: 12px;
 		}
 
 		&_reset {
