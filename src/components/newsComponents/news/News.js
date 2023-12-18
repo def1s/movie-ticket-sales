@@ -10,7 +10,7 @@ const News = ({modificators}) => {
 
 				<Preface 
 					title='TIX ID News' 
-					descr={'Berita tentang dunia perfilman terbaru untuk anda!'} 
+					descr={'The latest news about the world of cinema for you!'}
 					link={null}
 				/>
 				

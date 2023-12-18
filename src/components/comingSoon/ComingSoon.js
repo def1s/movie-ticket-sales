@@ -12,7 +12,7 @@ const ComingSoon = () => {
 
 				<Preface
 					title={'Coming soon...'}
-					descr={'Berita tentang dunia perfilman terbaru untuk anda!'}
+					descr={'The latest news about the world of cinema for you!'}
 					link={null}
 				/>
 

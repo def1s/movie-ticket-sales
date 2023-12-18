@@ -1,15 +1,13 @@
 import './advertisement.scss';
 import Slider from '../slider/Slider';
 
-import arrayToLeft from '../../imgs/arrow-left.png';
-import arrayToRight from '../../imgs/arrow-right.png';
 import jon from '../../imgs/jon.png';
 
 const Advertisement = ({modificators}) => {
 
 	const ads = (
 		<div className="advertisement__item">
-			<h2 className="advertisement__title">SEWA/BELI FILM dan SERIAL di TIX ID sekarang!</h2>
+			<h2 className="advertisement__title">Rent / buy movies and series on TIX ID now!</h2>
 
 			<img className="advertisement__cover" src={jon} alt='jon'></img>
 		</div>
